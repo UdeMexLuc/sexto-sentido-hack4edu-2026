@@ -40,7 +40,11 @@ def main():
             shutil.copy2(BASE / name, dst / name)
         runner_name = "EJECUTAR_DEMO_{}.cmd".format(n)
         # Use an ordinary batch wrapper without touching other directories.
-        cmd = "@echo off\r\nsetlocal EnableExtensions\r\npushd \"%~dp0\"\r\n" + \
+        cmd = ("@echo off\r\nsetlocal EnableExtensions\r\n" +
+               "chcp 65001 >nul\r\n" +
+               "set \"PYTHONIOENCODING=utf-8\"\r\n" +
+               "set \"PYTHONUTF8=1\"\r\n" +
+               "pushd \"%~dp0\"\r\n") + \
               "python reproducir_demo.py {}\r\nset \"RET=%errorlevel%\"\r\npopd\r\nexit /b %RET%\r\n".format(n)
         (dst / runner_name).write_bytes(cmd.encode("ascii"))
         print("[OK] Carpeta preparada:", dst)

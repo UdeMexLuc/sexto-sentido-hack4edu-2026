@@ -1,5 +1,5 @@
 {
-  "version": "sexto_35_v1_verificada_por_usuario_25_de_25",
+  "version": "sexto_35_v0.1.1_utf8_windows",
   "fecha_respaldo_local": "2026-11-04T10:47:12",
   "pruebas_esperadas": "verificar_sexto_35.py: 25/25 antes del respaldo",
   "documentos_y_codigo": 19,
@@ -30,5 +30,12 @@
     "reflexiones_alumno.jsonl",
     "reflexiones_sexto_35.jsonl"
   ],
-  "nota": "Version tecnica reproducible; la eficacia educativa requiere evaluacion humana"
+  "nota": "Nombre de carpeta conservado por compatibilidad; manifiesto actualizado para v0.1.1. La etiqueta v0.1.0 conserva la entrega anterior.",
+  "version_entrega": "0.1.1",
+  "actualizacion": "2026-11-04",
+  "origen_ajuste": "KB_SextoSentido_23/LEEME_AJUSTE_UTF8.txt",
+  "cambios_v0_1_1": [
+    "preparar_demos_video.py",
+    "preparar_demos_video.cmd"
+  ]
 }
