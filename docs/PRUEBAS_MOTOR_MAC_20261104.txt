@@ -1,0 +1,36 @@
+Ejecución local: 2026-11-04, macOS 15.6.1, Apple Silicon arm64
+DLV clásico: build BEN/Mar 29 2023
+Código de salida: 0
+
+SEXTO SENTIDO 35 - PRUEBAS DE INTEGRACION
+Usa una carpeta temporal; no modifica el historial original.
+
+[OK] T01 banco completo: 23+12=35
+[OK] T02 24 errores editoriales corresponden a la politica
+[OK] T03 objetivos de transferencia disponibles
+[OK] T04 listado sin crear historial
+[OK] T05 actividad 24: ayuda, revision e historial
+[OK] T06 actividad 25: ayuda, revision e historial
+[OK] T07 actividad 26: ayuda, revision e historial
+[OK] T08 actividad 27: ayuda, revision e historial
+[OK] T09 actividad 28: ayuda, revision e historial
+[OK] T10 actividad 29: ayuda, revision e historial
+[OK] T11 actividad 30: ayuda, revision e historial
+[OK] T12 actividad 31: ayuda, revision e historial
+[OK] T13 actividad 32: ayuda, revision e historial
+[OK] T14 actividad 33: ayuda, revision e historial
+[OK] T15 actividad 34: ayuda, revision e historial
+[OK] T16 actividad 35: ayuda, revision e historial
+[OK] T17 segundo distractor y pista breve
+[OK] T18 problema original 1: ayuda gradual y revision
+[OK] T19 acierto con baja confianza: pedir justificacion
+[OK] T20 reanudar revision pendiente sin duplicar respuesta
+[OK] T21 transferencia entre actividades 24 y 26
+[OK] T22 seguridad: caso 29 prima sobre transferencia
+[OK] T23 salida temprana: sin evaluacion inventada
+[OK] T24 nuevo historial independiente en carpeta temporal
+[OK] T25 historiales reales intactos
+
+[OK] 25 de 25 comprobaciones superadas.
+[OK] Los historiales reales no se modificaron.
+[OK] La version estable sexto_entrega.py permanece intacta.

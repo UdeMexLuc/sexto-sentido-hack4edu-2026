@@ -1,0 +1,11 @@
+test_35_aciertos_iniciales_y_justificacion (__main__.FlujosInterfaz) ... ok
+test_35_errores_ayuda_y_revision_correcta (__main__.FlujosInterfaz) ... ok
+test_fallo_dlv_no_guarda_respuesta_parcial (__main__.FlujosInterfaz) ... ok
+test_segundos_distractores_y_revision_incorrecta (__main__.FlujosInterfaz) ... ok
+test_transferencia_y_prioridad_de_precaucion (__main__.FlujosInterfaz) ... ok
+test_validacion_duplicados_y_recuperacion (__main__.FlujosInterfaz) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 1.686s
+
+OK

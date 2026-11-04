@@ -1,0 +1,3 @@
+Python: 3.9.6
+Ejecutable DLV: dlv (instalación externa local)
+['DLV [build BEN/Mar 29 2023   gcc Apple LLVM 14.0.0 (clang-1400.0.29.202)]', '', 'usage: dlv (instalación externa local) {FRONTEND} {OPTIONS} [filename [filename [...]]]', '', 'Frontends:']
