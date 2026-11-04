@@ -1,0 +1,20 @@
+# Datos de uso: no forman parte de la entrega.
+datos_interfaz/
+**/historial*.dlv
+**/historial*.dlv.bak
+**/reflexiones*.jsonl
+**/*.tmp
+# Motor de terceros: instalación externa.
+herramientas/dlv/bin/
+dlv
+dlv.exe
+# Generados y respaldos locales.
+DEMOS_VIDEO_SS35_*/
+KB_SextoSentido_35_ESTABLE_[0-9]*.zip
+KB_SextoSentido_35_ESTABLE_[0-9]*_[0-9]*_[0-9]*/
+__pycache__/
+*.py[cod]
+.DS_Store
+.env
+.env.*
+.venv/
