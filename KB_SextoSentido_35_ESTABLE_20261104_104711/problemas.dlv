@@ -1,0 +1,156 @@
+% KB Sexto Sentido: 23 problemas, version compacta.
+% Cambio limitado a este archivo; compatible con razonamiento.dlv,
+% pedagogia.dlv, validacion.dlv y textos_problemas.json.
+%
+% Cada instancia tiene ID entero (1..23), una familia y datos propios.
+% Reglas comunes generan los mismos hechos problema/1, familia/2,
+% premisa/2, intuicion_esperada/2, opcion/3 y atributos que antes.
+% NOTA: generar_kb.py y verificar_kb.py aun usan el formato antiguo.
+
+% ------------------------------------------------------------
+% 1. Instancias: cada problema se declara una unica vez.
+% ------------------------------------------------------------
+
+% Categorias: ID, subclase, superclase, propiedad.
+inst_cat(1,rosa,flor,marchitarse_rapido).
+inst_cat(2,violinista,musico,trabajar_de_noche).
+inst_cat(3,roble,arbol,ser_antiguo).
+inst_cat(4,cientifica_instituto,investigadora,publicar_astronomia).
+inst_cat(5,alumno_teatro,estudiante,vivir_lejos).
+inst_cat(6,gato,mamifero,dormir_dia).
+
+% Linda: ID, persona, suceso base A, suceso adicional B.
+inst_linda(7,clara,banco,ambiental).
+inst_linda(8,diego,aseguradora,privacidad).
+inst_linda(9,sofia,contadora,club_lectura).
+inst_linda(10,mateo,medico,reforestacion).
+inst_linda(11,valeria,abogada,ajedrez).
+inst_linda(12,andres,analista,refugio).
+
+% Evidencia: ID, software, numero encuestados, respuestas favorables.
+inst_evidencia(13,plataforma_algebra,100,90).
+inst_evidencia(14,lab_fisica,80,68).
+inst_evidencia(15,app_vocabulario,50,46).
+inst_evidencia(16,juego_historia,120,90).
+inst_evidencia(17,tutor_quimica,75,66).
+inst_evidencia(18,asistente_lectura,40,38).
+
+% Explosion: ID, sistema objeto, atomo P, atomo Q.
+inst_explosion(19,clasica,biblioteca,reloj).
+inst_explosion(20,clasica,pantalla,cuaderno_verde).
+inst_explosion(21,clasica,tren_a_tiempo,puerta_cerrada).
+inst_explosion(22,lp,servidor_activo,tres_fuentes).
+inst_explosion(23,lp,lampara_encendida,museo_lunes).
+
+% ------------------------------------------------------------
+% 2. Plantillas y hechos compartidos derivados.
+% ------------------------------------------------------------
+plantilla(P,cat_existencial) :- inst_cat(P,A,B,C).
+plantilla(P,linda_conjuncion) :- inst_linda(P,A,B,C).
+plantilla(P,encuesta_satisfaccion) :- inst_evidencia(P,A,N,K).
+plantilla(P,contradiccion) :- inst_explosion(P,S,A,B).
+problema(P) :- plantilla(P,T).
+
+familia(P,categorias) :- plantilla(P,cat_existencial).
+familia(P,linda) :- plantilla(P,linda_conjuncion).
+familia(P,evidencia) :- plantilla(P,encuesta_satisfaccion).
+familia(P,explosion) :- plantilla(P,contradiccion).
+
+subclase(P,A) :- inst_cat(P,A,B,C).
+superclase(P,B) :- inst_cat(P,A,B,C).
+propiedad(P,C) :- inst_cat(P,A,B,C).
+premisa(P,todo_sub_super) :- plantilla(P,cat_existencial).
+premisa(P,algun_super_prop) :- plantilla(P,cat_existencial).
+intuicion_esperada(P,afirma_algun_sub) :- plantilla(P,cat_existencial).
+
+persona(P,A) :- inst_linda(P,A,B,C).
+suceso_base(P,B) :- inst_linda(P,A,B,C).
+suceso_adicional(P,C) :- inst_linda(P,A,B,C).
+premisa(P,comparar_conjuncion) :- plantilla(P,linda_conjuncion).
+intuicion_esperada(P,conj_mayor) :- plantilla(P,linda_conjuncion).
+
+software(P,A) :- inst_evidencia(P,A,N,K).
+encuesta(P,N,K) :- inst_evidencia(P,A,N,K).
+evidencia_de(P,satisfaccion) :- plantilla(P,encuesta_satisfaccion).
+objetivo_afirmado(P,mejora_aprendizaje) :- plantilla(P,encuesta_satisfaccion).
+alcance(P,solo_encuesta) :- plantilla(P,encuesta_satisfaccion).
+intuicion_esperada(P,gusto_demuestra_mejora) :- plantilla(P,encuesta_satisfaccion).
+
+sistema(P,S) :- inst_explosion(P,S,A,B).
+atomo_p(P,A) :- inst_explosion(P,S,A,B).
+atomo_q(P,B) :- inst_explosion(P,S,A,B).
+premisa(P,p) :- plantilla(P,contradiccion).
+premisa(P,no_p) :- plantilla(P,contradiccion).
+conclusion_objetivo(P,q) :- plantilla(P,contradiccion).
+independiente(P,p,q) :- plantilla(P,contradiccion).
+intuicion_esperada(P,no_se_sigue_q) :- sistema(P,clasica), plantilla(P,contradiccion).
+intuicion_esperada(P,si_se_sigue_q) :- sistema(P,lp), plantilla(P,contradiccion).
+
+% ------------------------------------------------------------
+% 3. Opciones: catalogo unico de cinco codigos por familia.
+%    orden(ID,C1,C2,C3,C4,C5) indica el codigo (1..5)
+%    que debe aparecer en las posiciones 1..5 para esa instancia.
+%    opcion(ID,Posicion,CodigoSemantico) se deriva; compatible
+%    con el JSON existente y con razonamiento.dlv.
+% ------------------------------------------------------------
+
+% Opciones canonicas: categorias.
+codigo_opcion(categorias,1,afirma_algun_sub).
+codigo_opcion(categorias,2,no_se_sigue_algun_sub).
+codigo_opcion(categorias,3,afirma_ningun_sub).
+codigo_opcion(categorias,4,afirma_todo_sub).
+codigo_opcion(categorias,5,afirma_todo_super).
+
+% Opciones canonicas: linda.
+codigo_opcion(linda,1,conj_mayor).
+codigo_opcion(linda,2,conj_no_mayor).
+codigo_opcion(linda,3,conj_estrictamente_menor).
+codigo_opcion(linda,4,conj_siempre_igual).
+codigo_opcion(linda,5,sin_relacion_general).
+
+% Opciones canonicas: evidencia.
+codigo_opcion(evidencia,1,gusto_demuestra_mejora).
+codigo_opcion(evidencia,2,dato_insuficiente).
+codigo_opcion(evidencia,3,demuestra_empeora).
+codigo_opcion(evidencia,4,porcentaje_satisfaccion_es_aprendizaje).
+codigo_opcion(evidencia,5,nadie_aprendio).
+
+% Opciones canonicas: explosion.
+codigo_opcion(explosion,1,si_se_sigue_q).
+codigo_opcion(explosion,2,no_se_sigue_q).
+codigo_opcion(explosion,3,solo_se_sigue_no_q).
+codigo_opcion(explosion,4,premisas_imposibles).
+codigo_opcion(explosion,5,no_se_sigue_nada).
+
+% Orden de presentacion por ID (nunca cambia el contenido).
+orden(1,3,1,4,5,2).
+orden(2,5,1,2,4,3).
+orden(3,4,5,1,3,2).
+orden(4,1,2,3,5,4).
+orden(5,1,2,3,5,4).
+orden(6,1,5,2,4,3).
+orden(7,3,4,2,5,1).
+orden(8,4,2,3,5,1).
+orden(9,4,3,2,1,5).
+orden(10,2,5,3,4,1).
+orden(11,1,5,2,4,3).
+orden(12,1,2,4,5,3).
+orden(13,2,1,3,4,5).
+orden(14,5,2,4,1,3).
+orden(15,3,2,1,5,4).
+orden(16,2,3,4,1,5).
+orden(17,4,5,3,2,1).
+orden(18,4,3,1,2,5).
+orden(19,3,2,1,4,5).
+orden(20,4,2,1,5,3).
+orden(21,3,5,2,4,1).
+orden(22,3,1,2,4,5).
+orden(23,3,2,1,5,4).
+
+% Proyeccion de la tupla de orden a cada posicion de la pregunta.
+opcion_codigo(P,1,C1) :- orden(P,C1,C2,C3,C4,C5).
+opcion_codigo(P,2,C2) :- orden(P,C1,C2,C3,C4,C5).
+opcion_codigo(P,3,C3) :- orden(P,C1,C2,C3,C4,C5).
+opcion_codigo(P,4,C4) :- orden(P,C1,C2,C3,C4,C5).
+opcion_codigo(P,5,C5) :- orden(P,C1,C2,C3,C4,C5).
+opcion(P,Pos,Tipo) :- familia(P,F), opcion_codigo(P,Pos,C), codigo_opcion(F,C,Tipo).

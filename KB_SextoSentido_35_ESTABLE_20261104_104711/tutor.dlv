@@ -1,0 +1,111 @@
+% Sexto Sentido - tutor.dlv (v1)
+% Conduccion del dialogo a partir de diagnostico + historial.
+% Una sola accion activa se elige por prioridad: menor numero gana.
+% El resultado es auditable mediante accion/4 y motivo/4.
+% Requiere problemas.dlv, historial_alumno.dlv, diagnostico.dlv.
+
+inicial_disponible(A,S,P) :- respuesta(A,S,P,inicial,N).
+final_disponible(A,S,P) :- respuesta(A,S,P,final,N).
+ayuda_previa(A,S,P) :- intervencion_hecha(A,S,P,X).
+
+% 1. Al inicio de un caso: mostrar la pregunta.
+candidata(A,S,P,presentar_pregunta,90) :-
+    contexto_actual(A,S,P), not inicial_disponible(A,S,P).
+
+% 2. Si el alumno ya reviso su respuesta, cerrar o explicar.
+candidata(A,S,P,resumir_revision,1) :-
+    contexto_actual(A,S,P), revision_exitosa(A,S,P).
+candidata(A,S,P,reexaminar_error,2) :-
+    contexto_actual(A,S,P), revision_sigue_error(A,S,P).
+candidata(A,S,P,continuar_tras_acierto,3) :-
+    contexto_actual(A,S,P), acierto_inicial(A,S,P),
+    final_disponible(A,S,P).
+
+% 3. Si el alumno se equivoco y ya recibio una intervencion,
+%    pedir una nueva respuesta, sin revelar todavia la solucion.
+candidata(A,S,P,pedir_revision,5) :-
+    contexto_actual(A,S,P), error_inicial(A,S,P),
+    ayuda_previa(A,S,P), not final_disponible(A,S,P).
+
+% 4. Adaptacion al historial: priorizar transferencia entre casos.
+candidata(A,S,P,comparar_caso_anterior,10) :-
+    contexto_actual(A,S,P), error_intuitivo(A,S,P),
+    familia(P,F), patron_intuitivo(A,F),
+    not ayuda_previa(A,S,P), not final_disponible(A,S,P).
+
+% 5. Primera dificultad con mucha confianza: el andamiaje
+%    depende de la familia del problema.
+candidata(A,S,P,pedir_contraejemplo,20) :-
+    contexto_actual(A,S,P), alta_confianza_error(A,S,P),
+    familia(P,categorias), not ayuda_previa(A,S,P),
+    not final_disponible(A,S,P).
+candidata(A,S,P,comparar_eventos,20) :-
+    contexto_actual(A,S,P), alta_confianza_error(A,S,P),
+    familia(P,linda), not ayuda_previa(A,S,P),
+    not final_disponible(A,S,P).
+candidata(A,S,P,distinguir_evidencia_y_conclusion,20) :-
+    contexto_actual(A,S,P), alta_confianza_error(A,S,P),
+    familia(P,evidencia), not ayuda_previa(A,S,P),
+    not final_disponible(A,S,P).
+candidata(A,S,P,aclarar_sistema_logico,20) :-
+    contexto_actual(A,S,P), alta_confianza_error(A,S,P),
+    familia(P,explosion), not ayuda_previa(A,S,P),
+    not final_disponible(A,S,P).
+
+% 6. Alternativas generales para errores y aciertos.
+candidata(A,S,P,ofrecer_pista_gradual,30) :-
+    contexto_actual(A,S,P), error_inicial(A,S,P),
+    not alta_confianza_error(A,S,P),
+    not ayuda_previa(A,S,P), not final_disponible(A,S,P).
+candidata(A,S,P,examinar_razones,40) :-
+    contexto_actual(A,S,P), error_inicial(A,S,P),
+    not ayuda_previa(A,S,P), not final_disponible(A,S,P).
+candidata(A,S,P,pedir_justificacion,50) :-
+    contexto_actual(A,S,P), baja_confianza_acierto(A,S,P),
+    not ayuda_previa(A,S,P), not final_disponible(A,S,P).
+candidata(A,S,P,proponer_nuevo_caso,60) :-
+    contexto_actual(A,S,P), acierto_inicial(A,S,P),
+    not baja_confianza_acierto(A,S,P),
+    not final_disponible(A,S,P).
+candidata(A,S,P,proponer_nuevo_caso,4) :-
+    contexto_actual(A,S,P), acierto_inicial(A,S,P),
+    ayuda_previa(A,S,P), not final_disponible(A,S,P).
+
+% Se selecciona solo la candidata con prioridad numerica menor.
+hay_mejor(A,S,P,Pr) :-
+    candidata(A,S,P,X,Pr), candidata(A,S,P,Y,Pr2), Pr2 < Pr.
+accion(A,S,P,X) :- candidata(A,S,P,X,Pr), not hay_mejor(A,S,P,Pr).
+
+% Motivos trazables para explicar la decision al alumno/docente.
+motivo(A,S,P,historial_errores_misma_familia) :-
+    accion(A,S,P,comparar_caso_anterior).
+motivo(A,S,P,error_con_confianza_alta) :-
+    accion(A,S,P,pedir_contraejemplo).
+motivo(A,S,P,error_con_confianza_alta) :-
+    accion(A,S,P,comparar_eventos).
+motivo(A,S,P,error_con_confianza_alta) :-
+    accion(A,S,P,distinguir_evidencia_y_conclusion).
+motivo(A,S,P,error_con_confianza_alta) :-
+    accion(A,S,P,aclarar_sistema_logico).
+motivo(A,S,P,error_con_confianza_moderada_o_baja) :-
+    accion(A,S,P,ofrecer_pista_gradual).
+motivo(A,S,P,error_sin_intervencion_previa) :-
+    accion(A,S,P,examinar_razones).
+motivo(A,S,P,esperando_primera_respuesta) :-
+    accion(A,S,P,presentar_pregunta).
+motivo(A,S,P,ya_recibio_ayuda) :-
+    accion(A,S,P,pedir_revision).
+motivo(A,S,P,cambio_a_respuesta_correcta) :-
+    accion(A,S,P,resumir_revision).
+motivo(A,S,P,revision_no_resuelve_error) :-
+    accion(A,S,P,reexaminar_error).
+motivo(A,S,P,acierto_inicial_con_duda) :-
+    accion(A,S,P,pedir_justificacion).
+motivo(A,S,P,acierto_y_puede_continuar) :-
+    accion(A,S,P,proponer_nuevo_caso).
+motivo(A,S,P,acierto_y_revision_completada) :-
+    accion(A,S,P,continuar_tras_acierto).
+
+
+% Una accion unica por contexto: detecta colisiones de politica.
+:- accion(A,S,P,X), accion(A,S,P,Y), X != Y.

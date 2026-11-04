@@ -1,0 +1,73 @@
+% Sexto Sentido - diagnostico.dlv (v1)
+% Diagnostico operacional, no psicologico: describe respuestas observadas.
+% Requiere problemas.dlv e historial_alumno.dlv.
+% No usa razonamiento.dlv, ni deriva la clave de los problemas.
+
+fase_valida(inicial).
+fase_valida(final).
+clase_valida(correcta).
+clase_valida(intuitiva).
+clase_valida(otra).
+
+% Una respuesta puede ser correcta, el error intuitivo previsto,
+% o algun otro error. La clasificacion viene de Python/JSON.
+acierto_inicial(A,S,P) :- evaluacion(A,S,P,inicial,correcta).
+error_intuitivo(A,S,P) :- evaluacion(A,S,P,inicial,intuitiva).
+otro_error(A,S,P) :- evaluacion(A,S,P,inicial,otra).
+error_inicial(A,S,P) :- error_intuitivo(A,S,P).
+error_inicial(A,S,P) :- otro_error(A,S,P).
+
+alta_confianza_error(A,S,P) :- error_inicial(A,S,P),
+    confianza(A,S,P,inicial,C), C >= 80.
+baja_confianza_acierto(A,S,P) :- acierto_inicial(A,S,P),
+    confianza(A,S,P,inicial,C), C <= 50.
+
+revision_exitosa(A,S,P) :- error_inicial(A,S,P),
+    evaluacion(A,S,P,final,correcta).
+revision_sigue_error(A,S,P) :- error_inicial(A,S,P),
+    evaluacion(A,S,P,final,intuitiva).
+revision_sigue_error(A,S,P) :- error_inicial(A,S,P),
+    evaluacion(A,S,P,final,otra).
+
+% Dos errores intuitivos de una misma familia, incluso si
+% ocurrieron en la misma sesion, constituyen una observacion
+% de repeticion. No demuestran por si solos un sesgo estable.
+patron_intuitivo(A,F) :-
+    evaluacion(A,S1,P1,inicial,intuitiva),
+    evaluacion(A,S2,P2,inicial,intuitiva),
+    familia(P1,F), familia(P2,F), S1 < S2.
+patron_intuitivo(A,F) :-
+    evaluacion(A,S,P1,inicial,intuitiva),
+    evaluacion(A,S,P2,inicial,intuitiva),
+    familia(P1,F), familia(P2,F), P1 < P2.
+
+perfil(A,F,repeticion_de_error_intuitivo) :- patron_intuitivo(A,F).
+perfil(A,F,revision_exitosa_observada) :-
+    revision_exitosa(A,S,P), familia(P,F).
+
+diagnostico(A,S,P,error_intuitivo) :- error_intuitivo(A,S,P).
+diagnostico(A,S,P,otro_error) :- otro_error(A,S,P).
+diagnostico(A,S,P,acierto_inicial) :- acierto_inicial(A,S,P).
+diagnostico(A,S,P,error_con_alta_confianza) :- alta_confianza_error(A,S,P).
+diagnostico(A,S,P,acierto_con_baja_confianza) :- baja_confianza_acierto(A,S,P).
+diagnostico(A,S,P,revision_exitosa) :- revision_exitosa(A,S,P).
+diagnostico(A,S,P,revision_sigue_error) :- revision_sigue_error(A,S,P).
+
+% Comprobaciones simples de consistencia de los datos recibidos.
+opcion_valida(P,N) :- opcion(P,N,C).
+tiene_respuesta(A,S,P,F) :- respuesta(A,S,P,F,N).
+tiene_evaluacion(A,S,P,F) :- evaluacion(A,S,P,F,C).
+
+:- contexto_actual(A,S,P), not problema(P).
+:- respuesta(A,S,P,F,N), not fase_valida(F).
+:- respuesta(A,S,P,F,N), not opcion_valida(P,N).
+:- evaluacion(A,S,P,F,C), not clase_valida(C).
+:- evaluacion(A,S,P,F,C), not fase_valida(F).
+:- evaluacion(A,S,P,F,C), not tiene_respuesta(A,S,P,F).
+:- respuesta(A,S,P,F,N), not tiene_evaluacion(A,S,P,F).
+:- respuesta(A,S,P,F,N1), respuesta(A,S,P,F,N2), N1 != N2.
+:- evaluacion(A,S,P,F,C1), evaluacion(A,S,P,F,C2), C1 != C2.
+:- confianza(A,S,P,F,C), C < 0.
+:- confianza(A,S,P,F,C), C > 100.
+:- contexto_actual(A,S1,P1), contexto_actual(A,S2,P2), S1 != S2.
+:- contexto_actual(A,S,P1), contexto_actual(A,S,P2), P1 != P2.

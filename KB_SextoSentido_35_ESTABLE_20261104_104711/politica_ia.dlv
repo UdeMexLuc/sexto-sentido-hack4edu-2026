@@ -1,0 +1,115 @@
+% Sexto Sentido - politica_ia.dlv (MODULO NO INTEGRADO)
+% Se carga con: problemas.dlv estructura_ia.dlv historial_alumno.dlv
+%                diagnostico.dlv tutor.dlv politica_ia.dlv
+%
+% Entrada adicional persistida por Python para CADA error inicial:
+% observacion_error(Alumno,Sesion,Problema,Categoria).
+% La categoria proviene de errores_previsibles en el JSON editorial.
+% La clave correcta y el identificador de opcion NO estan aqui.
+% Categorias = argumentos elegidos observables, NO diagnosticos mentales.
+% Este modulo AGREGA candidatas y motivos al tutor existente.
+% Menor numero = prioridad mayor; cierre 1..5, seguridad 7,
+% transferencia 9, ayuda especifica 15, respaldo clasico 20..90.
+
+% Competencias usadas solamente para recuperar casos previos distintos.
+objetivo_formativo(24,evaluar_evidencia).
+objetivo_formativo(25,verificar_procedimiento).
+objetivo_formativo(26,evaluar_evidencia).
+objetivo_formativo(27,verificar_procedimiento).
+objetivo_formativo(28,verificar_procedencia).
+objetivo_formativo(29,verificar_procedencia).
+objetivo_formativo(30,criterios_equitativos).
+objetivo_formativo(31,proteger_datos).
+objetivo_formativo(32,verificar_procedencia).
+objetivo_formativo(33,supervision_humana).
+objetivo_formativo(34,estimar_con_incertidumbre).
+objetivo_formativo(35,integridad_y_autoria).
+
+% Estas actividades priorizan la precaucion antes de comparar.
+precaucion_prioritaria(29).
+precaucion_prioritaria(31).
+precaucion_prioritaria(32).
+precaucion_prioritaria(33).
+
+% Asociacion editorial: (actividad,categoria de error,intervencion).
+% No codifica opciones ni respuestas correctas.
+estrategia_error(24,halo_o_autoridad_aparente,distinguir_impresion_evidencia).
+estrategia_error(24,sospecha_sin_evidencia,pedir_evidencia_pertinente).
+estrategia_error(25,aceptacion_por_personalizacion,verificar_operaciones).
+estrategia_error(25,aceptacion_por_claridad,verificar_operaciones).
+estrategia_error(26,sustituir_evidencia_por_presentacion,formular_preguntas_de_verificacion).
+estrategia_error(26,sustituir_evidencia_por_datos_comerciales,separar_incentivos_de_resultados_de_aprendizaje).
+estrategia_error(27,cancelacion_porcentajes,verificar_bases_porcentuales).
+estrategia_error(27,omitir_paso_relevante,comparar_procedimientos).
+estrategia_error(28,cita_por_autoridad_aparente,pedir_verificacion_fuente).
+estrategia_error(28,afirmar_inexistencia_sin_verificacion,distinguir_no_verificado_de_falso).
+estrategia_error(29,difusion_precipitada,detener_y_verificar).
+estrategia_error(29,verificacion_circular_con_ia,contrastar_con_fuente_primaria).
+estrategia_error(30,generalizacion_estereotipada,examinar_criterios_pertinentes).
+estrategia_error(30,compensacion_por_exclusion,comparar_equidad_y_evidencia).
+estrategia_error(31,justificacion_por_finalidad,revisar_privacidad_y_consentimiento).
+estrategia_error(31,eliminacion_parcial_de_identificadores,identificar_datos_personales_restantes).
+estrategia_error(32,autenticidad_por_semejanza,verificar_procedencia_multimedia).
+estrategia_error(32,falsedad_por_posibilidad_de_manipulacion,distinguir_posibilidad_y_prueba).
+estrategia_error(33,delegacion_decision_sensible,reconocer_limites_y_derivar).
+estrategia_error(33,consenso_de_ia_como_autoridad,distinguir_consenso_de_evidencia).
+estrategia_error(34,precision_ficticia,identificar_datos_faltantes).
+estrategia_error(34,rechazo_absoluto_de_ia,formular_estimacion_condicional).
+estrategia_error(35,autoridad_sustituta,distinguir_apoyo_y_sustitucion).
+estrategia_error(35,declaracion_sin_trabajo_propio,distinguir_transparencia_y_autoria).
+
+categoria_admitida(P,C) :- estrategia_error(P,C,X).
+
+% Validacion: una sola categoria prevista por intento y actividad.
+:- observacion_error(A,S,P,C), not actividad_ia(P).
+:- observacion_error(A,S,P,C), not categoria_admitida(P,C).
+:- observacion_error(A,S,P,C), not error_inicial(A,S,P).
+:- observacion_error(A,S,P,C1), observacion_error(A,S,P,C2), C1 != C2.
+
+% Solo se activa si existe respuesta inicial incorrecta y contexto.
+error_ia_actual(A,S,P,C) :-
+    contexto_actual(A,S,P), observacion_error(A,S,P,C),
+    error_inicial(A,S,P).
+
+% Una observacion anterior en OTRO problema de igual objetivo.
+% La sesion anterior, no el resultado final, respalda la comparacion.
+antecedente_objetivo(A,S,P,H) :-
+    contexto_actual(A,S,P),
+    objetivo_formativo(P,H), objetivo_formativo(P0,H),
+    observacion_error(A,S0,P0,C0), S0 < S, P0 != P.
+
+% 7. Proteccion ante situaciones sensibles o informacion no verificada.
+candidata(A,S,P,X,7) :-
+    error_ia_actual(A,S,P,C), estrategia_error(P,C,X),
+    precaucion_prioritaria(P),
+    not ayuda_previa(A,S,P), not final_disponible(A,S,P).
+
+% 9. Transferencia cuando hubo otro error inicial del mismo objetivo.
+candidata(A,S,P,comparar_objetivo_anterior,9) :-
+    error_ia_actual(A,S,P,C), objetivo_formativo(P,H),
+    antecedente_objetivo(A,S,P,H), not precaucion_prioritaria(P),
+    not ayuda_previa(A,S,P), not final_disponible(A,S,P).
+
+% 15. Primera intervencion segun la categoria observable del error.
+candidata(A,S,P,X,15) :-
+    error_ia_actual(A,S,P,C), estrategia_error(P,C,X),
+    not precaucion_prioritaria(P),
+    not ayuda_previa(A,S,P), not final_disponible(A,S,P).
+
+% Justificacion univoca para acciones nuevas. Para las viejas,
+% el archivo tutor.dlv conserva sus propios motivos.
+motivo(A,S,P,C) :-
+    accion(A,S,P,X), observacion_error(A,S,P,C),
+    estrategia_error(P,C,X).
+motivo(A,S,P,antecedente_en_mismo_objetivo) :-
+    accion(A,S,P,comparar_objetivo_anterior).
+
+% La confianza cambia la FORMA de la ayuda, no la respuesta correcta.
+modo_ayuda(A,S,P,contrastar_razones) :-
+    accion(A,S,P,X), observacion_error(A,S,P,C),
+    estrategia_error(P,C,X), alta_confianza_error(A,S,P).
+modo_ayuda(A,S,P,pista_breve) :-
+    accion(A,S,P,X), observacion_error(A,S,P,C),
+    estrategia_error(P,C,X), not alta_confianza_error(A,S,P).
+modo_ayuda(A,S,P,transferencia) :-
+    accion(A,S,P,comparar_objetivo_anterior).

@@ -1,0 +1,1162 @@
+{
+  "version": "1.0",
+  "total": 23,
+  "problemas": [
+    {
+      "id": 1,
+      "familia": "categorias",
+      "esquema": "todo_A_B__algun_B_C__algun_A_C",
+      "titulo": "Categorias: rosas y flores",
+      "enunciado": "Todas las rosas son flores. Algunas flores se marchitan rápidamente.",
+      "pregunta": "¿Se sigue necesariamente que algunas rosas se marchitan rápidamente?",
+      "opciones": [
+        {
+          "id": 1,
+          "codigo": "afirma_ningun_sub",
+          "texto": "Se deduce necesariamente que ningún individuo de «rosas» tiene esa propiedad."
+        },
+        {
+          "id": 2,
+          "codigo": "afirma_algun_sub",
+          "texto": "Sí: necesariamente existe al menos un individuo de «rosas» con la propiedad indicada."
+        },
+        {
+          "id": 3,
+          "codigo": "afirma_todo_sub",
+          "texto": "Se deduce necesariamente que todos los individuos de «rosas» tienen esa propiedad."
+        },
+        {
+          "id": 4,
+          "codigo": "afirma_todo_super",
+          "texto": "Se deduce necesariamente que todos los individuos de «flores» tienen esa propiedad."
+        },
+        {
+          "id": 5,
+          "codigo": "no_se_sigue_algun_sub",
+          "texto": "No: las premisas no garantizan que exista un individuo de «rosas» con esa propiedad."
+        }
+      ],
+      "clave_docente": {
+        "correcta_id": 5,
+        "intuitiva_s1_id": 2
+      },
+      "pistas": [
+        "Dibuja «rosas» dentro de «flores». ¿En que lugar del conjunto más amplio podrian estar quienes tienen la propiedad?",
+        "Construye un ejemplo con dos individuos: uno de «rosas» sin la propiedad y otro de «flores» con ella."
+      ],
+      "explicacion": "Las premisas permiten que el caso de «flores» con la propiedad este fuera de «rosas». Un contramodelo de dos individuos satisface ambas premisas y falsifica la conclusión.",
+      "error_previsto": "Generalizacion indebida desde una parte del conjunto amplio al subconjunto; confundir plausibilidad y consecuencia.",
+      "parametros": {
+        "sub": "rosa",
+        "super": "flor",
+        "propiedad": "marchitarse_rapido"
+      }
+    },
+    {
+      "id": 2,
+      "familia": "categorias",
+      "esquema": "todo_A_B__algun_B_C__algun_A_C",
+      "titulo": "Categorias: violinistas y músicos",
+      "enunciado": "Todos los violinistas son músicos. Algunos músicos trabajan de noche.",
+      "pregunta": "¿Se sigue necesariamente que algunos violinistas trabajan de noche?",
+      "opciones": [
+        {
+          "id": 1,
+          "codigo": "afirma_todo_super",
+          "texto": "Se deduce necesariamente que todos los individuos de «músicos» tienen esa propiedad."
+        },
+        {
+          "id": 2,
+          "codigo": "afirma_algun_sub",
+          "texto": "Sí: necesariamente existe al menos un individuo de «violinistas» con la propiedad indicada."
+        },
+        {
+          "id": 3,
+          "codigo": "no_se_sigue_algun_sub",
+          "texto": "No: las premisas no garantizan que exista un individuo de «violinistas» con esa propiedad."
+        },
+        {
+          "id": 4,
+          "codigo": "afirma_todo_sub",
+          "texto": "Se deduce necesariamente que todos los individuos de «violinistas» tienen esa propiedad."
+        },
+        {
+          "id": 5,
+          "codigo": "afirma_ningun_sub",
+          "texto": "Se deduce necesariamente que ningún individuo de «violinistas» tiene esa propiedad."
+        }
+      ],
+      "clave_docente": {
+        "correcta_id": 3,
+        "intuitiva_s1_id": 2
+      },
+      "pistas": [
+        "Dibuja «violinistas» dentro de «músicos». ¿En que lugar del conjunto más amplio podrian estar quienes tienen la propiedad?",
+        "Construye un ejemplo con dos individuos: uno de «violinistas» sin la propiedad y otro de «músicos» con ella."
+      ],
+      "explicacion": "Las premisas permiten que el caso de «músicos» con la propiedad este fuera de «violinistas». Un contramodelo de dos individuos satisface ambas premisas y falsifica la conclusión.",
+      "error_previsto": "Generalizacion indebida desde una parte del conjunto amplio al subconjunto; confundir plausibilidad y consecuencia.",
+      "parametros": {
+        "sub": "violinista",
+        "super": "musico",
+        "propiedad": "trabajar_de_noche"
+      }
+    },
+    {
+      "id": 3,
+      "familia": "categorias",
+      "esquema": "todo_A_B__algun_B_C__algun_A_C",
+      "titulo": "Categorias: robles y árboles",
+      "enunciado": "Todos los robles son árboles. Algunos árboles son muy antiguos.",
+      "pregunta": "¿Se sigue necesariamente que algunos robles son muy antiguos?",
+      "opciones": [
+        {
+          "id": 1,
+          "codigo": "afirma_todo_sub",
+          "texto": "Se deduce necesariamente que todos los individuos de «robles» tienen esa propiedad."
+        },
+        {
+          "id": 2,
+          "codigo": "afirma_todo_super",
+          "texto": "Se deduce necesariamente que todos los individuos de «árboles» tienen esa propiedad."
+        },
+        {
+          "id": 3,
+          "codigo": "afirma_algun_sub",
+          "texto": "Sí: necesariamente existe al menos un individuo de «robles» con la propiedad indicada."
+        },
+        {
+          "id": 4,
+          "codigo": "afirma_ningun_sub",
+          "texto": "Se deduce necesariamente que ningún individuo de «robles» tiene esa propiedad."
+        },
+        {
+          "id": 5,
+          "codigo": "no_se_sigue_algun_sub",
+          "texto": "No: las premisas no garantizan que exista un individuo de «robles» con esa propiedad."
+        }
+      ],
+      "clave_docente": {
+        "correcta_id": 5,
+        "intuitiva_s1_id": 3
+      },
+      "pistas": [
+        "Dibuja «robles» dentro de «árboles». ¿En que lugar del conjunto más amplio podrian estar quienes tienen la propiedad?",
+        "Construye un ejemplo con dos individuos: uno de «robles» sin la propiedad y otro de «árboles» con ella."
+      ],
+      "explicacion": "Las premisas permiten que el caso de «árboles» con la propiedad este fuera de «robles». Un contramodelo de dos individuos satisface ambas premisas y falsifica la conclusión.",
+      "error_previsto": "Generalizacion indebida desde una parte del conjunto amplio al subconjunto; confundir plausibilidad y consecuencia.",
+      "parametros": {
+        "sub": "roble",
+        "super": "arbol",
+        "propiedad": "ser_antiguo"
+      }
+    },
+    {
+      "id": 4,
+      "familia": "categorias",
+      "esquema": "todo_A_B__algun_B_C__algun_A_C",
+      "titulo": "Categorias: científicas del instituto y investigadoras",
+      "enunciado": "Todas las científicas del instituto son investigadoras. Algunas investigadoras han publicado sobre astronomía.",
+      "pregunta": "¿Se sigue necesariamente que algunas científicas del instituto han publicado sobre astronomía?",
+      "opciones": [
+        {
+          "id": 1,
+          "codigo": "afirma_algun_sub",
+          "texto": "Sí: necesariamente existe al menos un individuo de «científicas del instituto» con la propiedad indicada."
+        },
+        {
+          "id": 2,
+          "codigo": "no_se_sigue_algun_sub",
+          "texto": "No: las premisas no garantizan que exista un individuo de «científicas del instituto» con esa propiedad."
+        },
+        {
+          "id": 3,
+          "codigo": "afirma_ningun_sub",
+          "texto": "Se deduce necesariamente que ningún individuo de «científicas del instituto» tiene esa propiedad."
+        },
+        {
+          "id": 4,
+          "codigo": "afirma_todo_super",
+          "texto": "Se deduce necesariamente que todos los individuos de «investigadoras» tienen esa propiedad."
+        },
+        {
+          "id": 5,
+          "codigo": "afirma_todo_sub",
+          "texto": "Se deduce necesariamente que todos los individuos de «científicas del instituto» tienen esa propiedad."
+        }
+      ],
+      "clave_docente": {
+        "correcta_id": 2,
+        "intuitiva_s1_id": 1
+      },
+      "pistas": [
+        "Dibuja «científicas del instituto» dentro de «investigadoras». ¿En que lugar del conjunto más amplio podrian estar quienes tienen la propiedad?",
+        "Construye un ejemplo con dos individuos: uno de «científicas del instituto» sin la propiedad y otro de «investigadoras» con ella."
+      ],
+      "explicacion": "Las premisas permiten que el caso de «investigadoras» con la propiedad este fuera de «científicas del instituto». Un contramodelo de dos individuos satisface ambas premisas y falsifica la conclusión.",
+      "error_previsto": "Generalizacion indebida desde una parte del conjunto amplio al subconjunto; confundir plausibilidad y consecuencia.",
+      "parametros": {
+        "sub": "cientifica_instituto",
+        "super": "investigadora",
+        "propiedad": "publicar_astronomia"
+      }
+    },
+    {
+      "id": 5,
+      "familia": "categorias",
+      "esquema": "todo_A_B__algun_B_C__algun_A_C",
+      "titulo": "Categorias: alumnos del taller de teatro y estudiantes",
+      "enunciado": "Todos los alumnos del taller de teatro son estudiantes. Algunos estudiantes viven lejos de la escuela.",
+      "pregunta": "¿Se sigue necesariamente que algunos alumnos del taller de teatro viven lejos de la escuela?",
+      "opciones": [
+        {
+          "id": 1,
+          "codigo": "afirma_algun_sub",
+          "texto": "Sí: necesariamente existe al menos un individuo de «alumnos del taller de teatro» con la propiedad indicada."
+        },
+        {
+          "id": 2,
+          "codigo": "no_se_sigue_algun_sub",
+          "texto": "No: las premisas no garantizan que exista un individuo de «alumnos del taller de teatro» con esa propiedad."
+        },
+        {
+          "id": 3,
+          "codigo": "afirma_ningun_sub",
+          "texto": "Se deduce necesariamente que ningún individuo de «alumnos del taller de teatro» tiene esa propiedad."
+        },
+        {
+          "id": 4,
+          "codigo": "afirma_todo_super",
+          "texto": "Se deduce necesariamente que todos los individuos de «estudiantes» tienen esa propiedad."
+        },
+        {
+          "id": 5,
+          "codigo": "afirma_todo_sub",
+          "texto": "Se deduce necesariamente que todos los individuos de «alumnos del taller de teatro» tienen esa propiedad."
+        }
+      ],
+      "clave_docente": {
+        "correcta_id": 2,
+        "intuitiva_s1_id": 1
+      },
+      "pistas": [
+        "Dibuja «alumnos del taller de teatro» dentro de «estudiantes». ¿En que lugar del conjunto más amplio podrian estar quienes tienen la propiedad?",
+        "Construye un ejemplo con dos individuos: uno de «alumnos del taller de teatro» sin la propiedad y otro de «estudiantes» con ella."
+      ],
+      "explicacion": "Las premisas permiten que el caso de «estudiantes» con la propiedad este fuera de «alumnos del taller de teatro». Un contramodelo de dos individuos satisface ambas premisas y falsifica la conclusión.",
+      "error_previsto": "Generalizacion indebida desde una parte del conjunto amplio al subconjunto; confundir plausibilidad y consecuencia.",
+      "parametros": {
+        "sub": "alumno_teatro",
+        "super": "estudiante",
+        "propiedad": "vivir_lejos"
+      }
+    },
+    {
+      "id": 6,
+      "familia": "categorias",
+      "esquema": "todo_A_B__algun_B_C__algun_A_C",
+      "titulo": "Categorias: gatos y mamíferos",
+      "enunciado": "Todos los gatos son mamíferos. Algunos mamíferos duermen durante el día.",
+      "pregunta": "¿Se sigue necesariamente que algunos gatos duermen durante el día?",
+      "opciones": [
+        {
+          "id": 1,
+          "codigo": "afirma_algun_sub",
+          "texto": "Sí: necesariamente existe al menos un individuo de «gatos» con la propiedad indicada."
+        },
+        {
+          "id": 2,
+          "codigo": "afirma_todo_super",
+          "texto": "Se deduce necesariamente que todos los individuos de «mamíferos» tienen esa propiedad."
+        },
+        {
+          "id": 3,
+          "codigo": "no_se_sigue_algun_sub",
+          "texto": "No: las premisas no garantizan que exista un individuo de «gatos» con esa propiedad."
+        },
+        {
+          "id": 4,
+          "codigo": "afirma_todo_sub",
+          "texto": "Se deduce necesariamente que todos los individuos de «gatos» tienen esa propiedad."
+        },
+        {
+          "id": 5,
+          "codigo": "afirma_ningun_sub",
+          "texto": "Se deduce necesariamente que ningún individuo de «gatos» tiene esa propiedad."
+        }
+      ],
+      "clave_docente": {
+        "correcta_id": 3,
+        "intuitiva_s1_id": 1
+      },
+      "pistas": [
+        "Dibuja «gatos» dentro de «mamíferos». ¿En que lugar del conjunto más amplio podrian estar quienes tienen la propiedad?",
+        "Construye un ejemplo con dos individuos: uno de «gatos» sin la propiedad y otro de «mamíferos» con ella."
+      ],
+      "explicacion": "Las premisas permiten que el caso de «mamíferos» con la propiedad este fuera de «gatos». Un contramodelo de dos individuos satisface ambas premisas y falsifica la conclusión.",
+      "error_previsto": "Generalizacion indebida desde una parte del conjunto amplio al subconjunto; confundir plausibilidad y consecuencia.",
+      "parametros": {
+        "sub": "gato",
+        "super": "mamifero",
+        "propiedad": "dormir_dia"
+      }
+    },
+    {
+      "id": 7,
+      "familia": "linda",
+      "esquema": "P_A_y_B_menor_igual_P_A",
+      "titulo": "Conjunción: Clara",
+      "enunciado": "Clara participa en campañas de limpieza de ríos y lee sobre biodiversidad. Considera dos posibilidades: A = «trabaja en un banco» y A y B = «trabaja en un banco y participa en una organización ambiental».",
+      "pregunta": "Independientemente de lo sugerente que sea la descripción, ¿cuál afirmación sobre sus probabilidades debe ser verdadera?",
+      "opciones": [
+        {
+          "id": 1,
+          "codigo": "conj_estrictamente_menor",
+          "texto": "«trabaja en un banco y participa en una organización ambiental» es necesariamente menos probable, en sentido estricto, que «trabaja en un banco»."
+        },
+        {
+          "id": 2,
+          "codigo": "conj_siempre_igual",
+          "texto": "Ambas opciones tienen necesariamente la misma probabilidad."
+        },
+        {
+          "id": 3,
+          "codigo": "conj_no_mayor",
+          "texto": "«trabaja en un banco y participa en una organización ambiental» no puede ser más probable que «trabaja en un banco»."
+        },
+        {
+          "id": 4,
+          "codigo": "sin_relacion_general",
+          "texto": "No existe ninguna regla matemática general que relacione ambas probabilidades."
+        },
+        {
+          "id": 5,
+          "codigo": "conj_mayor",
+          "texto": "«trabaja en un banco y participa en una organización ambiental» es más probable que «trabaja en un banco»."
+        }
+      ],
+      "clave_docente": {
+        "correcta_id": 3,
+        "intuitiva_s1_id": 5
+      },
+      "pistas": [
+        "Piensa en los sucesos A y A y B como conjuntos. ¿Puede ocurrir A y B sin que ocurra A?",
+        "Dibuja una region A y, dentro de ella, la parte A y B. Compara sus tamanos probabilisticos."
+      ],
+      "explicacion": "La conjunción A y B es un subconjunto del suceso A. Por monotonicidad, P(A y B) <= P(A). La igualdad es posible, asi que no siempre hay desigualdad estricta.",
+      "error_previsto": "Falacia de conjunción: preferir la historia representativa a la inclusion entre sucesos.",
+      "parametros": {
+        "persona": "clara",
+        "suceso_a": "banco",
+        "suceso_b": "ambiental"
+      }
+    },
+    {
+      "id": 8,
+      "familia": "linda",
+      "esquema": "P_A_y_B_menor_igual_P_A",
+      "titulo": "Conjunción: Diego",
+      "enunciado": "Diego desarrolla proyectos de código abierto y asiste a charlas de privacidad digital. Considera dos posibilidades: A = «trabaja en una aseguradora» y A y B = «trabaja en una aseguradora y colabora en un colectivo de privacidad digital».",
+      "pregunta": "Independientemente de lo sugerente que sea la descripción, ¿cuál afirmación sobre sus probabilidades debe ser verdadera?",
+      "opciones": [
+        {
+          "id": 1,
+          "codigo": "conj_siempre_igual",
+          "texto": "Ambas opciones tienen necesariamente la misma probabilidad."
+        },
+        {
+          "id": 2,
+          "codigo": "conj_no_mayor",
+          "texto": "«trabaja en una aseguradora y colabora en un colectivo de privacidad digital» no puede ser más probable que «trabaja en una aseguradora»."
+        },
+        {
+          "id": 3,
+          "codigo": "conj_estrictamente_menor",
+          "texto": "«trabaja en una aseguradora y colabora en un colectivo de privacidad digital» es necesariamente menos probable, en sentido estricto, que «trabaja en una aseguradora»."
+        },
+        {
+          "id": 4,
+          "codigo": "sin_relacion_general",
+          "texto": "No existe ninguna regla matemática general que relacione ambas probabilidades."
+        },
+        {
+          "id": 5,
+          "codigo": "conj_mayor",
+          "texto": "«trabaja en una aseguradora y colabora en un colectivo de privacidad digital» es más probable que «trabaja en una aseguradora»."
+        }
+      ],
+      "clave_docente": {
+        "correcta_id": 2,
+        "intuitiva_s1_id": 5
+      },
+      "pistas": [
+        "Piensa en los sucesos A y A y B como conjuntos. ¿Puede ocurrir A y B sin que ocurra A?",
+        "Dibuja una region A y, dentro de ella, la parte A y B. Compara sus tamanos probabilisticos."
+      ],
+      "explicacion": "La conjunción A y B es un subconjunto del suceso A. Por monotonicidad, P(A y B) <= P(A). La igualdad es posible, asi que no siempre hay desigualdad estricta.",
+      "error_previsto": "Falacia de conjunción: preferir la historia representativa a la inclusion entre sucesos.",
+      "parametros": {
+        "persona": "diego",
+        "suceso_a": "aseguradora",
+        "suceso_b": "privacidad"
+      }
+    },
+    {
+      "id": 9,
+      "familia": "linda",
+      "esquema": "P_A_y_B_menor_igual_P_A",
+      "titulo": "Conjunción: Sofía",
+      "enunciado": "Sofía organiza clubes de lectura y visita librerias cada semana. Considera dos posibilidades: A = «es contadora» y A y B = «es contadora y coordina un club de lectura».",
+      "pregunta": "Independientemente de lo sugerente que sea la descripción, ¿cuál afirmación sobre sus probabilidades debe ser verdadera?",
+      "opciones": [
+        {
+          "id": 1,
+          "codigo": "conj_siempre_igual",
+          "texto": "Ambas opciones tienen necesariamente la misma probabilidad."
+        },
+        {
+          "id": 2,
+          "codigo": "conj_estrictamente_menor",
+          "texto": "«es contadora y coordina un club de lectura» es necesariamente menos probable, en sentido estricto, que «es contadora»."
+        },
+        {
+          "id": 3,
+          "codigo": "conj_no_mayor",
+          "texto": "«es contadora y coordina un club de lectura» no puede ser más probable que «es contadora»."
+        },
+        {
+          "id": 4,
+          "codigo": "conj_mayor",
+          "texto": "«es contadora y coordina un club de lectura» es más probable que «es contadora»."
+        },
+        {
+          "id": 5,
+          "codigo": "sin_relacion_general",
+          "texto": "No existe ninguna regla matemática general que relacione ambas probabilidades."
+        }
+      ],
+      "clave_docente": {
+        "correcta_id": 3,
+        "intuitiva_s1_id": 4
+      },
+      "pistas": [
+        "Piensa en los sucesos A y A y B como conjuntos. ¿Puede ocurrir A y B sin que ocurra A?",
+        "Dibuja una region A y, dentro de ella, la parte A y B. Compara sus tamanos probabilisticos."
+      ],
+      "explicacion": "La conjunción A y B es un subconjunto del suceso A. Por monotonicidad, P(A y B) <= P(A). La igualdad es posible, asi que no siempre hay desigualdad estricta.",
+      "error_previsto": "Falacia de conjunción: preferir la historia representativa a la inclusion entre sucesos.",
+      "parametros": {
+        "persona": "sofia",
+        "suceso_a": "contadora",
+        "suceso_b": "club_lectura"
+      }
+    },
+    {
+      "id": 10,
+      "familia": "linda",
+      "esquema": "P_A_y_B_menor_igual_P_A",
+      "titulo": "Conjunción: Mateo",
+      "enunciado": "Mateo hace senderismo y colabora en jornadas de reforestación. Considera dos posibilidades: A = «es médico» y A y B = «es médico y participa en reforestaciones».",
+      "pregunta": "Independientemente de lo sugerente que sea la descripción, ¿cuál afirmación sobre sus probabilidades debe ser verdadera?",
+      "opciones": [
+        {
+          "id": 1,
+          "codigo": "conj_no_mayor",
+          "texto": "«es médico y participa en reforestaciones» no puede ser más probable que «es médico»."
+        },
+        {
+          "id": 2,
+          "codigo": "sin_relacion_general",
+          "texto": "No existe ninguna regla matemática general que relacione ambas probabilidades."
+        },
+        {
+          "id": 3,
+          "codigo": "conj_estrictamente_menor",
+          "texto": "«es médico y participa en reforestaciones» es necesariamente menos probable, en sentido estricto, que «es médico»."
+        },
+        {
+          "id": 4,
+          "codigo": "conj_siempre_igual",
+          "texto": "Ambas opciones tienen necesariamente la misma probabilidad."
+        },
+        {
+          "id": 5,
+          "codigo": "conj_mayor",
+          "texto": "«es médico y participa en reforestaciones» es más probable que «es médico»."
+        }
+      ],
+      "clave_docente": {
+        "correcta_id": 1,
+        "intuitiva_s1_id": 5
+      },
+      "pistas": [
+        "Piensa en los sucesos A y A y B como conjuntos. ¿Puede ocurrir A y B sin que ocurra A?",
+        "Dibuja una region A y, dentro de ella, la parte A y B. Compara sus tamanos probabilisticos."
+      ],
+      "explicacion": "La conjunción A y B es un subconjunto del suceso A. Por monotonicidad, P(A y B) <= P(A). La igualdad es posible, asi que no siempre hay desigualdad estricta.",
+      "error_previsto": "Falacia de conjunción: preferir la historia representativa a la inclusion entre sucesos.",
+      "parametros": {
+        "persona": "mateo",
+        "suceso_a": "medico",
+        "suceso_b": "reforestacion"
+      }
+    },
+    {
+      "id": 11,
+      "familia": "linda",
+      "esquema": "P_A_y_B_menor_igual_P_A",
+      "titulo": "Conjunción: Valeria",
+      "enunciado": "Valeria resuelve acertijos y participa en torneos locales de ajedrez. Considera dos posibilidades: A = «es abogada» y A y B = «es abogada y juega ajedrez competitivo».",
+      "pregunta": "Independientemente de lo sugerente que sea la descripción, ¿cuál afirmación sobre sus probabilidades debe ser verdadera?",
+      "opciones": [
+        {
+          "id": 1,
+          "codigo": "conj_mayor",
+          "texto": "«es abogada y juega ajedrez competitivo» es más probable que «es abogada»."
+        },
+        {
+          "id": 2,
+          "codigo": "sin_relacion_general",
+          "texto": "No existe ninguna regla matemática general que relacione ambas probabilidades."
+        },
+        {
+          "id": 3,
+          "codigo": "conj_no_mayor",
+          "texto": "«es abogada y juega ajedrez competitivo» no puede ser más probable que «es abogada»."
+        },
+        {
+          "id": 4,
+          "codigo": "conj_siempre_igual",
+          "texto": "Ambas opciones tienen necesariamente la misma probabilidad."
+        },
+        {
+          "id": 5,
+          "codigo": "conj_estrictamente_menor",
+          "texto": "«es abogada y juega ajedrez competitivo» es necesariamente menos probable, en sentido estricto, que «es abogada»."
+        }
+      ],
+      "clave_docente": {
+        "correcta_id": 3,
+        "intuitiva_s1_id": 1
+      },
+      "pistas": [
+        "Piensa en los sucesos A y A y B como conjuntos. ¿Puede ocurrir A y B sin que ocurra A?",
+        "Dibuja una region A y, dentro de ella, la parte A y B. Compara sus tamanos probabilisticos."
+      ],
+      "explicacion": "La conjunción A y B es un subconjunto del suceso A. Por monotonicidad, P(A y B) <= P(A). La igualdad es posible, asi que no siempre hay desigualdad estricta.",
+      "error_previsto": "Falacia de conjunción: preferir la historia representativa a la inclusion entre sucesos.",
+      "parametros": {
+        "persona": "valeria",
+        "suceso_a": "abogada",
+        "suceso_b": "ajedrez"
+      }
+    },
+    {
+      "id": 12,
+      "familia": "linda",
+      "esquema": "P_A_y_B_menor_igual_P_A",
+      "titulo": "Conjunción: Andrés",
+      "enunciado": "Andrés cuida animales rescatados y ayuda en jornadas de adopcion. Considera dos posibilidades: A = «es analista financiero» y A y B = «es analista financiero y es voluntario de un refugio animal».",
+      "pregunta": "Independientemente de lo sugerente que sea la descripción, ¿cuál afirmación sobre sus probabilidades debe ser verdadera?",
+      "opciones": [
+        {
+          "id": 1,
+          "codigo": "conj_mayor",
+          "texto": "«es analista financiero y es voluntario de un refugio animal» es más probable que «es analista financiero»."
+        },
+        {
+          "id": 2,
+          "codigo": "conj_no_mayor",
+          "texto": "«es analista financiero y es voluntario de un refugio animal» no puede ser más probable que «es analista financiero»."
+        },
+        {
+          "id": 3,
+          "codigo": "conj_siempre_igual",
+          "texto": "Ambas opciones tienen necesariamente la misma probabilidad."
+        },
+        {
+          "id": 4,
+          "codigo": "sin_relacion_general",
+          "texto": "No existe ninguna regla matemática general que relacione ambas probabilidades."
+        },
+        {
+          "id": 5,
+          "codigo": "conj_estrictamente_menor",
+          "texto": "«es analista financiero y es voluntario de un refugio animal» es necesariamente menos probable, en sentido estricto, que «es analista financiero»."
+        }
+      ],
+      "clave_docente": {
+        "correcta_id": 2,
+        "intuitiva_s1_id": 1
+      },
+      "pistas": [
+        "Piensa en los sucesos A y A y B como conjuntos. ¿Puede ocurrir A y B sin que ocurra A?",
+        "Dibuja una region A y, dentro de ella, la parte A y B. Compara sus tamanos probabilisticos."
+      ],
+      "explicacion": "La conjunción A y B es un subconjunto del suceso A. Por monotonicidad, P(A y B) <= P(A). La igualdad es posible, asi que no siempre hay desigualdad estricta.",
+      "error_previsto": "Falacia de conjunción: preferir la historia representativa a la inclusion entre sucesos.",
+      "parametros": {
+        "persona": "andres",
+        "suceso_a": "analista",
+        "suceso_b": "refugio"
+      }
+    },
+    {
+      "id": 13,
+      "familia": "evidencia",
+      "esquema": "satisfaccion_no_implica_mejora",
+      "titulo": "Encuesta: una plataforma de álgebra",
+      "enunciado": "Se encuestó a 100 alumnos que probaron una plataforma de álgebra. 90 (90 %) eligieron la valoración positiva «me gustó usarla». No se midió el aprendizaje. La dirección escolar afirma que una plataforma de álgebra mejora las calificaciones de álgebra.",
+      "pregunta": "¿La información presentada demuestra la conclusión sobre el aprendizaje?",
+      "opciones": [
+        {
+          "id": 1,
+          "codigo": "dato_insuficiente",
+          "texto": "No: las opiniones positivas no demuestran por sí solas una mejora del aprendizaje."
+        },
+        {
+          "id": 2,
+          "codigo": "gusto_demuestra_mejora",
+          "texto": "Sí: las opiniones positivas demuestran que mejoró el aprendizaje."
+        },
+        {
+          "id": 3,
+          "codigo": "demuestra_empeora",
+          "texto": "No: esas opiniones demuestran que el aprendizaje empeoro."
+        },
+        {
+          "id": 4,
+          "codigo": "porcentaje_satisfaccion_es_aprendizaje",
+          "texto": "Sí: el porcentaje de satisfacción es también el porcentaje que aprendió más."
+        },
+        {
+          "id": 5,
+          "codigo": "nadie_aprendio",
+          "texto": "No: como no se midió el aprendizaje, necesariamente nadie aprendió nada."
+        }
+      ],
+      "clave_docente": {
+        "correcta_id": 1,
+        "intuitiva_s1_id": 2
+      },
+      "pistas": [
+        "Subraya que variable midió realmente la encuesta y que variable aparece en la conclusión.",
+        "¿Pueden dos grupos declarar la misma satisfacción y, sin embargo, obtener resultados distintos en una prueba de aprendizaje?"
+      ],
+      "explicacion": "La encuesta mide una opinion de uso o aceptacion, no una mejora del aprendizaje. Son compatibles con el dato tanto una mejora como su ausencia. No se demuestra eficacia ni ineficacia.",
+      "error_previsto": "Sustituir aprendizaje efectivo por satisfacción y convertir una opinion positiva en demostracion causal.",
+      "parametros": {
+        "software": "plataforma_algebra",
+        "total": 100,
+        "favorables": 90,
+        "porcentaje": 90
+      }
+    },
+    {
+      "id": 14,
+      "familia": "evidencia",
+      "esquema": "satisfaccion_no_implica_mejora",
+      "titulo": "Encuesta: un laboratorio virtual de física",
+      "enunciado": "Se encuestó a 80 alumnos que probaron un laboratorio virtual de física. 68 (85 %) eligieron la valoración positiva «me pareció divertido». No se midió el aprendizaje. La dirección escolar afirma que un laboratorio virtual de física mejora la comprension de las leyes de Newton.",
+      "pregunta": "¿La información presentada demuestra la conclusión sobre el aprendizaje?",
+      "opciones": [
+        {
+          "id": 1,
+          "codigo": "nadie_aprendio",
+          "texto": "No: como no se midió el aprendizaje, necesariamente nadie aprendió nada."
+        },
+        {
+          "id": 2,
+          "codigo": "dato_insuficiente",
+          "texto": "No: las opiniones positivas no demuestran por sí solas una mejora del aprendizaje."
+        },
+        {
+          "id": 3,
+          "codigo": "porcentaje_satisfaccion_es_aprendizaje",
+          "texto": "Sí: el porcentaje de satisfacción es también el porcentaje que aprendió más."
+        },
+        {
+          "id": 4,
+          "codigo": "gusto_demuestra_mejora",
+          "texto": "Sí: las opiniones positivas demuestran que mejoró el aprendizaje."
+        },
+        {
+          "id": 5,
+          "codigo": "demuestra_empeora",
+          "texto": "No: esas opiniones demuestran que el aprendizaje empeoro."
+        }
+      ],
+      "clave_docente": {
+        "correcta_id": 2,
+        "intuitiva_s1_id": 4
+      },
+      "pistas": [
+        "Subraya que variable midió realmente la encuesta y que variable aparece en la conclusión.",
+        "¿Pueden dos grupos declarar la misma satisfacción y, sin embargo, obtener resultados distintos en una prueba de aprendizaje?"
+      ],
+      "explicacion": "La encuesta mide una opinion de uso o aceptacion, no una mejora del aprendizaje. Son compatibles con el dato tanto una mejora como su ausencia. No se demuestra eficacia ni ineficacia.",
+      "error_previsto": "Sustituir aprendizaje efectivo por satisfacción y convertir una opinion positiva en demostracion causal.",
+      "parametros": {
+        "software": "lab_fisica",
+        "total": 80,
+        "favorables": 68,
+        "porcentaje": 85
+      }
+    },
+    {
+      "id": 15,
+      "familia": "evidencia",
+      "esquema": "satisfaccion_no_implica_mejora",
+      "titulo": "Encuesta: una aplicación de vocabulario",
+      "enunciado": "Se encuestó a 50 alumnos que probaron una aplicación de vocabulario. 46 (92 %) eligieron la valoración positiva «volvería a usarla». No se midió el aprendizaje. La dirección escolar afirma que una aplicación de vocabulario aumenta la retención de vocabulario.",
+      "pregunta": "¿La información presentada demuestra la conclusión sobre el aprendizaje?",
+      "opciones": [
+        {
+          "id": 1,
+          "codigo": "demuestra_empeora",
+          "texto": "No: esas opiniones demuestran que el aprendizaje empeoro."
+        },
+        {
+          "id": 2,
+          "codigo": "dato_insuficiente",
+          "texto": "No: las opiniones positivas no demuestran por sí solas una mejora del aprendizaje."
+        },
+        {
+          "id": 3,
+          "codigo": "gusto_demuestra_mejora",
+          "texto": "Sí: las opiniones positivas demuestran que mejoró el aprendizaje."
+        },
+        {
+          "id": 4,
+          "codigo": "nadie_aprendio",
+          "texto": "No: como no se midió el aprendizaje, necesariamente nadie aprendió nada."
+        },
+        {
+          "id": 5,
+          "codigo": "porcentaje_satisfaccion_es_aprendizaje",
+          "texto": "Sí: el porcentaje de satisfacción es también el porcentaje que aprendió más."
+        }
+      ],
+      "clave_docente": {
+        "correcta_id": 2,
+        "intuitiva_s1_id": 3
+      },
+      "pistas": [
+        "Subraya que variable midió realmente la encuesta y que variable aparece en la conclusión.",
+        "¿Pueden dos grupos declarar la misma satisfacción y, sin embargo, obtener resultados distintos en una prueba de aprendizaje?"
+      ],
+      "explicacion": "La encuesta mide una opinion de uso o aceptacion, no una mejora del aprendizaje. Son compatibles con el dato tanto una mejora como su ausencia. No se demuestra eficacia ni ineficacia.",
+      "error_previsto": "Sustituir aprendizaje efectivo por satisfacción y convertir una opinion positiva en demostracion causal.",
+      "parametros": {
+        "software": "app_vocabulario",
+        "total": 50,
+        "favorables": 46,
+        "porcentaje": 92
+      }
+    },
+    {
+      "id": 16,
+      "familia": "evidencia",
+      "esquema": "satisfaccion_no_implica_mejora",
+      "titulo": "Encuesta: un juego educativo de historia",
+      "enunciado": "Se encuestó a 120 alumnos que probaron un juego educativo de historia. 90 (75 %) eligieron la valoración positiva «me pareció interesante». No se midió el aprendizaje. La dirección escolar afirma que un juego educativo de historia incrementa el conocimiento de historia.",
+      "pregunta": "¿La información presentada demuestra la conclusión sobre el aprendizaje?",
+      "opciones": [
+        {
+          "id": 1,
+          "codigo": "dato_insuficiente",
+          "texto": "No: las opiniones positivas no demuestran por sí solas una mejora del aprendizaje."
+        },
+        {
+          "id": 2,
+          "codigo": "demuestra_empeora",
+          "texto": "No: esas opiniones demuestran que el aprendizaje empeoro."
+        },
+        {
+          "id": 3,
+          "codigo": "porcentaje_satisfaccion_es_aprendizaje",
+          "texto": "Sí: el porcentaje de satisfacción es también el porcentaje que aprendió más."
+        },
+        {
+          "id": 4,
+          "codigo": "gusto_demuestra_mejora",
+          "texto": "Sí: las opiniones positivas demuestran que mejoró el aprendizaje."
+        },
+        {
+          "id": 5,
+          "codigo": "nadie_aprendio",
+          "texto": "No: como no se midió el aprendizaje, necesariamente nadie aprendió nada."
+        }
+      ],
+      "clave_docente": {
+        "correcta_id": 1,
+        "intuitiva_s1_id": 4
+      },
+      "pistas": [
+        "Subraya que variable midió realmente la encuesta y que variable aparece en la conclusión.",
+        "¿Pueden dos grupos declarar la misma satisfacción y, sin embargo, obtener resultados distintos en una prueba de aprendizaje?"
+      ],
+      "explicacion": "La encuesta mide una opinion de uso o aceptacion, no una mejora del aprendizaje. Son compatibles con el dato tanto una mejora como su ausencia. No se demuestra eficacia ni ineficacia.",
+      "error_previsto": "Sustituir aprendizaje efectivo por satisfacción y convertir una opinion positiva en demostracion causal.",
+      "parametros": {
+        "software": "juego_historia",
+        "total": 120,
+        "favorables": 90,
+        "porcentaje": 75
+      }
+    },
+    {
+      "id": 17,
+      "familia": "evidencia",
+      "esquema": "satisfaccion_no_implica_mejora",
+      "titulo": "Encuesta: un tutor de IA para química",
+      "enunciado": "Se encuestó a 75 alumnos que probaron un tutor de IA para química. 66 (88 %) eligieron la valoración positiva «su interfaz fue fácil de usar». No se midió el aprendizaje. La dirección escolar afirma que un tutor de IA para química mejora el rendimiento en química.",
+      "pregunta": "¿La información presentada demuestra la conclusión sobre el aprendizaje?",
+      "opciones": [
+        {
+          "id": 1,
+          "codigo": "porcentaje_satisfaccion_es_aprendizaje",
+          "texto": "Sí: el porcentaje de satisfacción es también el porcentaje que aprendió más."
+        },
+        {
+          "id": 2,
+          "codigo": "nadie_aprendio",
+          "texto": "No: como no se midió el aprendizaje, necesariamente nadie aprendió nada."
+        },
+        {
+          "id": 3,
+          "codigo": "demuestra_empeora",
+          "texto": "No: esas opiniones demuestran que el aprendizaje empeoro."
+        },
+        {
+          "id": 4,
+          "codigo": "dato_insuficiente",
+          "texto": "No: las opiniones positivas no demuestran por sí solas una mejora del aprendizaje."
+        },
+        {
+          "id": 5,
+          "codigo": "gusto_demuestra_mejora",
+          "texto": "Sí: las opiniones positivas demuestran que mejoró el aprendizaje."
+        }
+      ],
+      "clave_docente": {
+        "correcta_id": 4,
+        "intuitiva_s1_id": 5
+      },
+      "pistas": [
+        "Subraya que variable midió realmente la encuesta y que variable aparece en la conclusión.",
+        "¿Pueden dos grupos declarar la misma satisfacción y, sin embargo, obtener resultados distintos en una prueba de aprendizaje?"
+      ],
+      "explicacion": "La encuesta mide una opinion de uso o aceptacion, no una mejora del aprendizaje. Son compatibles con el dato tanto una mejora como su ausencia. No se demuestra eficacia ni ineficacia.",
+      "error_previsto": "Sustituir aprendizaje efectivo por satisfacción y convertir una opinion positiva en demostracion causal.",
+      "parametros": {
+        "software": "tutor_quimica",
+        "total": 75,
+        "favorables": 66,
+        "porcentaje": 88
+      }
+    },
+    {
+      "id": 18,
+      "familia": "evidencia",
+      "esquema": "satisfaccion_no_implica_mejora",
+      "titulo": "Encuesta: un asistente de lectura",
+      "enunciado": "Se encuestó a 40 alumnos que probaron un asistente de lectura. 38 (95 %) eligieron la valoración positiva «lo recomendaría a un amigo». No se midió el aprendizaje. La dirección escolar afirma que un asistente de lectura mejora la comprension lectora.",
+      "pregunta": "¿La información presentada demuestra la conclusión sobre el aprendizaje?",
+      "opciones": [
+        {
+          "id": 1,
+          "codigo": "porcentaje_satisfaccion_es_aprendizaje",
+          "texto": "Sí: el porcentaje de satisfacción es también el porcentaje que aprendió más."
+        },
+        {
+          "id": 2,
+          "codigo": "demuestra_empeora",
+          "texto": "No: esas opiniones demuestran que el aprendizaje empeoro."
+        },
+        {
+          "id": 3,
+          "codigo": "gusto_demuestra_mejora",
+          "texto": "Sí: las opiniones positivas demuestran que mejoró el aprendizaje."
+        },
+        {
+          "id": 4,
+          "codigo": "dato_insuficiente",
+          "texto": "No: las opiniones positivas no demuestran por sí solas una mejora del aprendizaje."
+        },
+        {
+          "id": 5,
+          "codigo": "nadie_aprendio",
+          "texto": "No: como no se midió el aprendizaje, necesariamente nadie aprendió nada."
+        }
+      ],
+      "clave_docente": {
+        "correcta_id": 4,
+        "intuitiva_s1_id": 3
+      },
+      "pistas": [
+        "Subraya que variable midió realmente la encuesta y que variable aparece en la conclusión.",
+        "¿Pueden dos grupos declarar la misma satisfacción y, sin embargo, obtener resultados distintos en una prueba de aprendizaje?"
+      ],
+      "explicacion": "La encuesta mide una opinion de uso o aceptacion, no una mejora del aprendizaje. Son compatibles con el dato tanto una mejora como su ausencia. No se demuestra eficacia ni ineficacia.",
+      "error_previsto": "Sustituir aprendizaje efectivo por satisfacción y convertir una opinion positiva en demostracion causal.",
+      "parametros": {
+        "software": "asistente_lectura",
+        "total": 40,
+        "favorables": 38,
+        "porcentaje": 95
+      }
+    },
+    {
+      "id": 19,
+      "familia": "explosion",
+      "esquema": "P_y_no_P_implica_Q__clasica",
+      "titulo": "Contradicción: clásica (19)",
+      "enunciado": "Trabaja exclusivamente en la lógica clásica. Sus premisas son P = «La biblioteca está abierta» y no P = «No es cierto que la biblioteca está abierta». La fórmula Q = «El reloj del aula marca las doce» es un átomo independiente de P.",
+      "pregunta": "¿Se sigue lógicamente Q de P y no P en la lógica indicada?",
+      "opciones": [
+        {
+          "id": 1,
+          "codigo": "solo_se_sigue_no_q",
+          "texto": "Solamente se deduce la negación de esa conclusión, nunca la conclusión misma."
+        },
+        {
+          "id": 2,
+          "codigo": "no_se_sigue_q",
+          "texto": "No: la conclusión «El reloj del aula marca las doce» no es consecuencia necesaria de esas premisas."
+        },
+        {
+          "id": 3,
+          "codigo": "si_se_sigue_q",
+          "texto": "Sí: la conclusión «El reloj del aula marca las doce» es consecuencia de las dos premisas."
+        },
+        {
+          "id": 4,
+          "codigo": "premisas_imposibles",
+          "texto": "No se puede plantear el ejercicio: una teoría no puede contener premisas contradictorias."
+        },
+        {
+          "id": 5,
+          "codigo": "no_se_sigue_nada",
+          "texto": "De dos premisas contradictorias no se deduce absolutamente ninguna fórmula."
+        }
+      ],
+      "clave_docente": {
+        "correcta_id": 3,
+        "intuitiva_s1_id": 2
+      },
+      "pistas": [
+        "Distingue la relación cotidiana entre afirmaciones de la consecuencia definida por el sistema logico indicado.",
+        "En lógica clásica, piensa sí existe alguna valuacion que haga verdaderas P y no P a la vez."
+      ],
+      "explicacion": "En lógica clásica no hay un modelo que satisfaga P y no P simultaneamente; por la semantica de consecuencia, ambas premisas implican cualquier Q (explosion).",
+      "error_previsto": "Rechazo intuitivo de una consecuencia formal porque Q no guarda relación tematica con P.",
+      "parametros": {
+        "logica": "clasica",
+        "p": "biblioteca",
+        "q": "reloj"
+      }
+    },
+    {
+      "id": 20,
+      "familia": "explosion",
+      "esquema": "P_y_no_P_implica_Q__clasica",
+      "titulo": "Contradicción: clásica (20)",
+      "enunciado": "Trabaja exclusivamente en la lógica clásica. Sus premisas son P = «La pantalla está encendida» y no P = «No es cierto que la pantalla está encendida». La fórmula Q = «El cuaderno de Ana es verde» es un átomo independiente de P.",
+      "pregunta": "¿Se sigue lógicamente Q de P y no P en la lógica indicada?",
+      "opciones": [
+        {
+          "id": 1,
+          "codigo": "premisas_imposibles",
+          "texto": "No se puede plantear el ejercicio: una teoría no puede contener premisas contradictorias."
+        },
+        {
+          "id": 2,
+          "codigo": "no_se_sigue_q",
+          "texto": "No: la conclusión «El cuaderno de Ana es verde» no es consecuencia necesaria de esas premisas."
+        },
+        {
+          "id": 3,
+          "codigo": "si_se_sigue_q",
+          "texto": "Sí: la conclusión «El cuaderno de Ana es verde» es consecuencia de las dos premisas."
+        },
+        {
+          "id": 4,
+          "codigo": "no_se_sigue_nada",
+          "texto": "De dos premisas contradictorias no se deduce absolutamente ninguna fórmula."
+        },
+        {
+          "id": 5,
+          "codigo": "solo_se_sigue_no_q",
+          "texto": "Solamente se deduce la negación de esa conclusión, nunca la conclusión misma."
+        }
+      ],
+      "clave_docente": {
+        "correcta_id": 3,
+        "intuitiva_s1_id": 2
+      },
+      "pistas": [
+        "Distingue la relación cotidiana entre afirmaciones de la consecuencia definida por el sistema logico indicado.",
+        "En lógica clásica, piensa sí existe alguna valuacion que haga verdaderas P y no P a la vez."
+      ],
+      "explicacion": "En lógica clásica no hay un modelo que satisfaga P y no P simultaneamente; por la semantica de consecuencia, ambas premisas implican cualquier Q (explosion).",
+      "error_previsto": "Rechazo intuitivo de una consecuencia formal porque Q no guarda relación tematica con P.",
+      "parametros": {
+        "logica": "clasica",
+        "p": "pantalla",
+        "q": "cuaderno_verde"
+      }
+    },
+    {
+      "id": 21,
+      "familia": "explosion",
+      "esquema": "P_y_no_P_implica_Q__clasica",
+      "titulo": "Contradicción: clásica (21)",
+      "enunciado": "Trabaja exclusivamente en la lógica clásica. Sus premisas son P = «El tren llegó a tiempo» y no P = «No es cierto que el tren llegó a tiempo». La fórmula Q = «La puerta azul está cerrada» es un átomo independiente de P.",
+      "pregunta": "¿Se sigue lógicamente Q de P y no P en la lógica indicada?",
+      "opciones": [
+        {
+          "id": 1,
+          "codigo": "solo_se_sigue_no_q",
+          "texto": "Solamente se deduce la negación de esa conclusión, nunca la conclusión misma."
+        },
+        {
+          "id": 2,
+          "codigo": "no_se_sigue_nada",
+          "texto": "De dos premisas contradictorias no se deduce absolutamente ninguna fórmula."
+        },
+        {
+          "id": 3,
+          "codigo": "no_se_sigue_q",
+          "texto": "No: la conclusión «La puerta azul está cerrada» no es consecuencia necesaria de esas premisas."
+        },
+        {
+          "id": 4,
+          "codigo": "premisas_imposibles",
+          "texto": "No se puede plantear el ejercicio: una teoría no puede contener premisas contradictorias."
+        },
+        {
+          "id": 5,
+          "codigo": "si_se_sigue_q",
+          "texto": "Sí: la conclusión «La puerta azul está cerrada» es consecuencia de las dos premisas."
+        }
+      ],
+      "clave_docente": {
+        "correcta_id": 5,
+        "intuitiva_s1_id": 3
+      },
+      "pistas": [
+        "Distingue la relación cotidiana entre afirmaciones de la consecuencia definida por el sistema logico indicado.",
+        "En lógica clásica, piensa sí existe alguna valuacion que haga verdaderas P y no P a la vez."
+      ],
+      "explicacion": "En lógica clásica no hay un modelo que satisfaga P y no P simultaneamente; por la semantica de consecuencia, ambas premisas implican cualquier Q (explosion).",
+      "error_previsto": "Rechazo intuitivo de una consecuencia formal porque Q no guarda relación tematica con P.",
+      "parametros": {
+        "logica": "clasica",
+        "p": "tren_a_tiempo",
+        "q": "puerta_cerrada"
+      }
+    },
+    {
+      "id": 22,
+      "familia": "explosion",
+      "esquema": "P_y_no_P_implica_Q__lp",
+      "titulo": "Contradicción: lp (22)",
+      "enunciado": "Trabaja exclusivamente en la lógica paraconsistente LP (Logic of Paradox). Sus premisas son P = «El servidor está activo» y no P = «No es cierto que el servidor está activo». La fórmula Q = «El jardín tiene tres fuentes» es un átomo independiente de P.",
+      "pregunta": "¿Se sigue lógicamente Q de P y no P en la lógica indicada?",
+      "opciones": [
+        {
+          "id": 1,
+          "codigo": "solo_se_sigue_no_q",
+          "texto": "Solamente se deduce la negación de esa conclusión, nunca la conclusión misma."
+        },
+        {
+          "id": 2,
+          "codigo": "si_se_sigue_q",
+          "texto": "Sí: la conclusión «El jardín tiene tres fuentes» es consecuencia de las dos premisas."
+        },
+        {
+          "id": 3,
+          "codigo": "no_se_sigue_q",
+          "texto": "No: la conclusión «El jardín tiene tres fuentes» no es consecuencia necesaria de esas premisas."
+        },
+        {
+          "id": 4,
+          "codigo": "premisas_imposibles",
+          "texto": "No se puede plantear el ejercicio: una teoría no puede contener premisas contradictorias."
+        },
+        {
+          "id": 5,
+          "codigo": "no_se_sigue_nada",
+          "texto": "De dos premisas contradictorias no se deduce absolutamente ninguna fórmula."
+        }
+      ],
+      "clave_docente": {
+        "correcta_id": 3,
+        "intuitiva_s1_id": 2
+      },
+      "pistas": [
+        "Distingue la relación cotidiana entre afirmaciones de la consecuencia definida por el sistema logico indicado.",
+        "En LP, considera una valuacion en que P sea verdadera y falsa a la vez, mientras Q sea solo falsa."
+      ],
+      "explicacion": "En LP existe una valuacion con P designada y no P designada, pero Q no designada. Esa valuacion es un contraejemplo a P, no P |= Q: no hay explosion general.",
+      "error_previsto": "Aplicación automatica del principio clasico de explosion a una lógica paraconsistente distinta.",
+      "parametros": {
+        "logica": "lp",
+        "p": "servidor_activo",
+        "q": "tres_fuentes"
+      }
+    },
+    {
+      "id": 23,
+      "familia": "explosion",
+      "esquema": "P_y_no_P_implica_Q__lp",
+      "titulo": "Contradicción: lp (23)",
+      "enunciado": "Trabaja exclusivamente en la lógica paraconsistente LP (Logic of Paradox). Sus premisas son P = «La lampara está encendida» y no P = «No es cierto que la lampara está encendida». La fórmula Q = «El museo abre los lunes» es un átomo independiente de P.",
+      "pregunta": "¿Se sigue lógicamente Q de P y no P en la lógica indicada?",
+      "opciones": [
+        {
+          "id": 1,
+          "codigo": "solo_se_sigue_no_q",
+          "texto": "Solamente se deduce la negación de esa conclusión, nunca la conclusión misma."
+        },
+        {
+          "id": 2,
+          "codigo": "no_se_sigue_q",
+          "texto": "No: la conclusión «El museo abre los lunes» no es consecuencia necesaria de esas premisas."
+        },
+        {
+          "id": 3,
+          "codigo": "si_se_sigue_q",
+          "texto": "Sí: la conclusión «El museo abre los lunes» es consecuencia de las dos premisas."
+        },
+        {
+          "id": 4,
+          "codigo": "no_se_sigue_nada",
+          "texto": "De dos premisas contradictorias no se deduce absolutamente ninguna fórmula."
+        },
+        {
+          "id": 5,
+          "codigo": "premisas_imposibles",
+          "texto": "No se puede plantear el ejercicio: una teoría no puede contener premisas contradictorias."
+        }
+      ],
+      "clave_docente": {
+        "correcta_id": 2,
+        "intuitiva_s1_id": 3
+      },
+      "pistas": [
+        "Distingue la relación cotidiana entre afirmaciones de la consecuencia definida por el sistema logico indicado.",
+        "En LP, considera una valuacion en que P sea verdadera y falsa a la vez, mientras Q sea solo falsa."
+      ],
+      "explicacion": "En LP existe una valuacion con P designada y no P designada, pero Q no designada. Esa valuacion es un contraejemplo a P, no P |= Q: no hay explosion general.",
+      "error_previsto": "Aplicación automatica del principio clasico de explosion a una lógica paraconsistente distinta.",
+      "parametros": {
+        "logica": "lp",
+        "p": "lampara_encendida",
+        "q": "museo_lunes"
+      }
+    }
+  ]
+}

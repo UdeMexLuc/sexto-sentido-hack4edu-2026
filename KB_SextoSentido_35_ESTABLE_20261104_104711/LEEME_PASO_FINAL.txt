@@ -1,0 +1,61 @@
+SEXTO SENTIDO 35 - CIERRE DEL PROTOTIPO INICIAL
+Fecha del paquete: 2026-11-04
+
+OBJETIVO
+1. Congelar una copia estable del prototipo actual.
+2. Generar tres demostraciones reales y reproducibles para el video.
+3. Documentar el alcance educativo y los limites frente al Reto 07.
+
+REQUISITOS
+- Windows CMD, Python 3 y 'dlv' disponible desde CMD.
+- El proyecto KB_SextoSentido_23 ya incluye los ficheros de la version de
+  35 actividades y las 25 pruebas pasadas.
+- Extraer SOLO los nueve archivos nuevos de este paquete en la carpeta
+  KB_SextoSentido_23. No reemplazar los ficheros DLV o Python existentes.
+
+PASO A. CONGELAR
+Desde CMD situado en KB_SextoSentido_23:
+
+    congelar_sexto_35.cmd
+
+Este comando repite verificar_sexto_35.py (25 tests). Si falla no copia.
+Si pasan, crea en la carpeta superior:
+
+    KB_SextoSentido_35_ESTABLE_yyyymmdd_hhmmss\
+    KB_SextoSentido_35_ESTABLE_yyyymmdd_hhmmss.zip
+
+Incluye MANIFIESTO_SHA256.txt y ESTADO_VERSION.json.
+NO incluye historial_alumno.dlv, historial_sexto_35.dlv ni reflexiones
+personales. No sobrescribe ninguna copia anterior.
+
+PASO B. PREPARAR TRES DEMOS REPRODUCIBLES
+
+    preparar_demos_video.cmd
+
+Creara en la carpeta superior algo como:
+
+    DEMOS_VIDEO_SS35_yyyymmdd_hhmmss\
+      01_verificar_calculo\
+      02_aviso_no_verificado\
+      03_adaptacion_historial\
+
+El comando ejecuta cada demo con entradas predefinidas y DLV real.
+Dentro de cada subcarpeta quedaran:
+  - EJECUTAR_DEMO_N.cmd, para repetirla desde CMD cuando se grabe;
+  - TRANSCRIPCION_DEMO_N.txt, salida real con entradas visibles;
+  - SALIDA_BRUTA_1.txt (y SALIDA_BRUTA_2.txt en la tercera demo).
+
+Cada repeticion usa datos ficticios y una carpeta temporal nueva.
+No altera historiales reales ni fuentes del programa.
+
+PASO C. COMPARTIR CON LOS COLEGAS
+- GUIA_DEMOS_VIDEO.md (espanol)
+- GUION_VIDEO_10MIN_EN.md (ingles)
+- MATRIZ_RETO07.md (espanol)
+- Las tres transcripciones obtenidas en Windows.
+
+IMPORTANTE
+Las 25 pruebas certifican funcionamiento tecnico EN LOS CASOS PROBADOS.
+No demuestran mejora de aprendizaje ni cumplimiento formal de una rubrica
+no disponible. Las fuentes originales de datos y el tutor no se modifican.
+El guion de diez minutos es orientativo: verificar la duracion admitida.

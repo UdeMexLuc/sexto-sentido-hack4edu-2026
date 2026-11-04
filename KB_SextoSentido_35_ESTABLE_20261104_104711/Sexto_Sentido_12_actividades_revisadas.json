@@ -1,0 +1,666 @@
+{
+  "schema_version": "0.3-revision-pedagogica",
+  "titulo": "Sexto Sentido - banco de 12 actividades para revision pedagogica",
+  "estado": "PROPUESTA PEDAGOGICA REVISADA - sin validacion empirica; no integrada al software",
+  "numeracion": "SS-024 a SS-035; no modifica los 23 problemas existentes",
+  "fuente_cuatro_originales": "casos_escolares.json; los originales no se han modificado",
+  "adaptaciones": {
+    "SS-024": "enunciado y opciones preservados; solo indexacion numerica",
+    "SS-025": "enunciado y opciones del original preservados; objetivo pedagogico corregido",
+    "SS-026": "variante de opcion multiple del original abierto; distractor comercial afinado; original conservado",
+    "SS-027": "variante de opcion multiple con nuevos valores de transferencia: 600, +20%, -20%, resultado 576; original conservado"
+  },
+  "flujo_previsto": [
+    "mostrar_enunciado_y_opciones",
+    "registrar_respuesta_inicial_y_confianza",
+    "evaluar_segun_clave_editorial_en_Python",
+    "consultar_DLV_para_elegir_estrategia",
+    "mostrar_pista_especifica",
+    "registrar_revision_y_confianza",
+    "explicar_clave_y_limites",
+    "guardar_historial"
+  ],
+  "criterio_epistemico": "Las opciones se interpretan como indicadores operativos del argumento elegido, no como diagnosticos psicologicos ni evidencia de activacion de Sistema 1 o Sistema 2. Las etiquetas de errores previstos son hipotesis pedagogicas y requieren validacion.",
+  "limites_del_tutor": "No consulta servicios externos en tiempo real; no verifica enlaces, noticias o voces reales. Las escenas son ficticias. DLV selecciona estrategias, no produce las respuestas correctas.",
+  "poblacion_sugerida": "secundaria alta y bachillerato; requiere revision del docente",
+  "actividades": [
+    {
+      "numero": 24,
+      "id": "SS-024",
+      "titulo": "Una propuesta para aprender matemáticas",
+      "area": "apariencia_vs_evidencia",
+      "objetivo": "Distinguir una impresión favorable de la evidencia que respalda una conclusión.",
+      "origen": "ABC-ESC-001;opciones_y_enunciado_preservados",
+      "estado": "propuesta_para_revision",
+      "enunciado": "Tu escuela está considerando una aplicación para enseñar matemáticas. Su representante hace una presentación clara y entretenida, responde con seguridad y resulta muy agradable. Al terminar, una compañera comenta: «Se nota que sabe de lo que habla. Estoy segura de que su aplicación ayudará a los estudiantes a aprender más». Durante la presentación no se mostraron resultados de aprendizaje ni comparaciones con otras herramientas. ¿Cuál de estas conclusiones está mejor justificada?",
+      "opciones": [
+        {
+          "id": 1,
+          "texto": "La aplicación mejora el aprendizaje, porque su representante demuestra seguridad y capacidad para comunicarse."
+        },
+        {
+          "id": 2,
+          "texto": "La aplicación probablemente es ineficaz, porque una presentación tan atractiva busca ocultar sus defectos."
+        },
+        {
+          "id": 3,
+          "texto": "La presentación produjo una buena impresión, pero todavía falta evidencia para evaluar si la aplicación mejora el aprendizaje."
+        }
+      ],
+      "clave_docente": {
+        "correcta_id": 3,
+        "intuitiva_s1_id": 1
+      },
+      "explicacion_editorial": "La claridad, la simpatía y la seguridad del representante no bastan para demostrar que la aplicación mejora el aprendizaje. Tampoco permiten concluir que sea ineficaz o que se estén ocultando defectos. Para evaluar esa afirmación se necesitan resultados de aprendizaje, información sobre cómo se midieron y una comparación pertinente.",
+      "errores_previsibles": [
+        {
+          "opcion_id": 1,
+          "etiqueta": "halo_o_autoridad_aparente",
+          "descripcion": "La seguridad del presentador se toma como evidencia de eficacia.",
+          "intervencion_sugerida": "distinguir_impresion_evidencia"
+        },
+        {
+          "opcion_id": 2,
+          "etiqueta": "sospecha_sin_evidencia",
+          "descripcion": "Se infiere ineficacia o engaño sin datos que lo sustenten.",
+          "intervencion_sugerida": "pedir_evidencia_pertinente"
+        }
+      ],
+      "pista_gradual": "Separa lo que observaste sobre el representante de lo que sabes sobre los resultados de la aplicación. ¿Qué información permite pasar de una cosa a la otra?",
+      "reflexion_final": "¿Qué tendría que mostrar el representante para que aumentara razonablemente tu confianza en la eficacia de la aplicación?",
+      "limite_ia_que_ensena": "La IA puede sonar convincente sin aportar evidencia de eficacia.",
+      "confianza_inicial": {
+        "min": 0,
+        "max": 100
+      },
+      "revision_permitida": true,
+      "justificacion_breve_opcional": true,
+      "nota_metodologica": "La opcion elegida es indicio de un tipo de razonamiento, no diagnostico psicologico de sesgo ni prueba de Sistema 1 o Sistema 2."
+    },
+    {
+      "numero": 25,
+      "id": "SS-025",
+      "titulo": "La mochila de Lucía",
+      "area": "verificacion_calculo",
+      "objetivo": "Verificar el razonamiento y las bases porcentuales de una respuesta generada por IA, sin tomar la amabilidad o personalizacion como garantia de correccion.",
+      "origen": "ABC-ESC-002;opciones_y_enunciado_preservados",
+      "estado": "propuesta_para_revision",
+      "enunciado": "Lucía pregunta a una IA: «Estoy en bachillerato y me cuesta calcular porcentajes. Una mochila de $800 sube 25% y después tiene un descuento del 25%. ¿Vuelve a costar $800?». La IA responde: «¡Exactamente, Lucía! Tu intuición es correcta. Como estás empezando con porcentajes, recuerda esta regla sencilla: si algo sube y baja el mismo porcentaje, vuelve al precio inicial. El aumento y el descuento se cancelan: +25% −25% = 0%. Por tanto, la mochila vuelve a costar $800». ¿Qué permite decidir si esta respuesta es correcta?",
+      "opciones": [
+        {
+          "id": 1,
+          "texto": "Que la IA confirme tu intuición y adapte la explicación a tu nivel."
+        },
+        {
+          "id": 2,
+          "texto": "Que puedas comprobar las operaciones y las cantidades sobre las que se aplica cada porcentaje."
+        },
+        {
+          "id": 3,
+          "texto": "Que la explicación incluya una regla sencilla y una conclusión destacada."
+        }
+      ],
+      "clave_docente": {
+        "correcta_id": 2,
+        "intuitiva_s1_id": 1
+      },
+      "explicacion_editorial": "La respuesta de la IA es incorrecta. El aumento se calcula sobre $800: 800 × 1.25 = 1000. El descuento se calcula sobre $1000: 1000 × 0.75 = 750. El precio final es $750. Los porcentajes no se cancelan porque se aplican a cantidades diferentes. La amabilidad, la personalización y la claridad no sustituyen la comprobación.",
+      "errores_previsibles": [
+        {
+          "opcion_id": 1,
+          "etiqueta": "aceptacion_por_personalizacion",
+          "descripcion": "La respuesta amable se considera garantia de un calculo correcto.",
+          "intervencion_sugerida": "verificar_operaciones"
+        },
+        {
+          "opcion_id": 3,
+          "etiqueta": "aceptacion_por_claridad",
+          "descripcion": "Se confia en una regla facil de recordar sin comprobar sus supuestos.",
+          "intervencion_sugerida": "verificar_operaciones"
+        }
+      ],
+      "pista_gradual": "¿El aumento y el descuento se calculan sobre el mismo precio? Calcula primero cuánto cuesta la mochila después del aumento.",
+      "reflexion_final": "¿Qué parte de la respuesta de la IA te resultó convincente y qué comprobación permitió evaluar su conclusión?",
+      "limite_ia_que_ensena": "Una explicación personalizada puede equivocarse al aplicar porcentajes.",
+      "confianza_inicial": {
+        "min": 0,
+        "max": 100
+      },
+      "revision_permitida": true,
+      "justificacion_breve_opcional": true,
+      "nota_metodologica": "La opcion elegida es indicio de un tipo de razonamiento, no diagnostico psicologico de sesgo ni prueba de Sistema 1 o Sistema 2."
+    },
+    {
+      "numero": 26,
+      "id": "SS-026",
+      "titulo": "¿Qué sabemos realmente de esta propuesta?",
+      "area": "evaluacion_de_evidencia",
+      "objetivo": "Distinguir una impresión favorable de la evidencia sobre eficacia y formular preguntas pertinentes para evaluar una propuesta.",
+      "origen": "ABC-ESC-003;variante_MVP_de_la_respuesta_abierta_80_120_palabras",
+      "estado": "propuesta_para_revision",
+      "enunciado": "En una reunión escolar, una empresa presenta una plataforma de tutorías con inteligencia artificial. La demostración es ordenada y visualmente atractiva. La respuesta que aparece en pantalla dice:\n\n«Cada estudiante aprende de manera diferente. Nuestra plataforma adapta las explicaciones a sus necesidades, fortalece su confianza y mejora su aprendizaje. Una educación personalizada abre mejores oportunidades para todos».\n\nAl terminar, Elena comenta:\n\n—La explicación es clara y estoy de acuerdo con lo que dice sobre la educación. Creo que deberíamos contratarla.\n\n¿Qué par de preguntas permitiría evaluar mejor la afirmación de que la plataforma mejora el aprendizaje?",
+      "opciones": [
+        {
+          "id": 1,
+          "texto": "¿Qué resultados de aprendizaje se midieron? ¿Con qué grupo o alternativa se compararon?"
+        },
+        {
+          "id": 2,
+          "texto": "¿Es atractiva la interfaz? ¿El representante explica con seguridad?"
+        },
+        {
+          "id": 3,
+          "texto": "¿Cuánto gana la empresa con la plataforma? ¿Cuánto invierte en publicidad para promoverla?"
+        }
+      ],
+      "clave_docente": {
+        "correcta_id": 1,
+        "intuitiva_s1_id": 2
+      },
+      "explicacion_editorial": "Para comprobar la afirmacion de que mejora el aprendizaje se necesitan resultados medidos y una comparacion pertinente. La presentacion y los datos comerciales pueden servir para otras decisiones, pero por si solos no miden eficacia educativa.",
+      "errores_previsibles": [
+        {
+          "opcion_id": 2,
+          "etiqueta": "sustituir_evidencia_por_presentacion",
+          "descripcion": "Se inspeccionan cualidades de la demostracion, no resultados de aprendizaje.",
+          "intervencion_sugerida": "formular_preguntas_de_verificacion"
+        },
+        {
+          "opcion_id": 3,
+          "etiqueta": "sustituir_evidencia_por_datos_comerciales",
+          "descripcion": "El estudiante pregunta por incentivos comerciales, que pueden ser relevantes para una compra, pero no responden directamente si hay mejoria de aprendizaje.",
+          "intervencion_sugerida": "separar_incentivos_de_resultados_de_aprendizaje"
+        }
+      ],
+      "pista_gradual": "Estar de acuerdo con un propósito educativo no demuestra que una herramienta lo consiga. ¿Qué afirmaciones describen intenciones y cuáles necesitarían resultados verificables?",
+      "reflexion_final": "¿Qué evidencia podría hacerte aumentar o disminuir tu confianza en recomendar la contratación?",
+      "limite_ia_que_ensena": "La propuesta de una IA puede formular objetivos deseables sin demostrar que los logra.",
+      "confianza_inicial": {
+        "min": 0,
+        "max": 100
+      },
+      "revision_permitida": true,
+      "justificacion_breve_opcional": true,
+      "nota_metodologica": "La opcion elegida es indicio de un tipo de razonamiento, no diagnostico psicologico de sesgo ni prueba de Sistema 1 o Sistema 2."
+    },
+    {
+      "numero": 27,
+      "id": "SS-027",
+      "titulo": "La mochila de Lucía: tres respuestas de IA",
+      "area": "comparacion_respuestas_ia",
+      "objetivo": "Comparar tres respuestas simuladas de IA, verificar cada paso del calculo y transferir la regla de bases porcentuales a cantidades distintas.",
+      "origen": "ABC-ESC-004; variante_MVP_de_transferencia_con_numeros_nuevos; original_conservado_en_casos_escolares.json",
+      "estado": "propuesta_para_revision",
+      "enunciado": "Una mochila cuesta $600. Su precio aumenta un 20% y despues tiene un descuento del 20% sobre el precio aumentado. Tres asistentes de IA ofrecen respuestas distintas. ¿Cual resuelve correctamente el problema?",
+      "opciones": [
+        {
+          "id": 1,
+          "texto": "Respuesta IA 1: El precio final es $600. Primero aumenta 20% y luego disminuye 20%. Los porcentajes son iguales y de signos opuestos, asi que se cancelan y se recupera el precio inicial."
+        },
+        {
+          "id": 2,
+          "texto": "Respuesta IA 2: El precio final es $576. El 20% de $600 son $120: nuevo precio, $720. El descuento de 20% sobre $720 equivale a $144; entonces $720 - $144 = $576."
+        },
+        {
+          "id": 3,
+          "texto": "Respuesta IA 3: El precio final es $480. El descuento es el 20% de $600, es decir, $120. Como hay que descontarlo, basta con restar $600 - $120 = $480."
+        }
+      ],
+      "clave_docente": {
+        "correcta_id": 2,
+        "intuitiva_s1_id": 1
+      },
+      "explicacion_editorial": "La respuesta 2 es correcta: el aumento de $120 lleva el precio a $720; el descuento de $144 se calcula sobre $720 y deja $576. La respuesta 1 cancela porcentajes aplicados a bases distintas. La respuesta 3 omite el aumento previo. Una explicacion con operaciones solo es fiable cuando incluye todos los pasos pertinentes.",
+      "errores_previsibles": [
+        {
+          "opcion_id": 1,
+          "etiqueta": "cancelacion_porcentajes",
+          "descripcion": "Se supone que subir y bajar el mismo porcentaje siempre revierte el cambio.",
+          "intervencion_sugerida": "verificar_bases_porcentuales"
+        },
+        {
+          "opcion_id": 3,
+          "etiqueta": "omitir_paso_relevante",
+          "descripcion": "Se hacen operaciones legibles, pero se ignora un paso del enunciado.",
+          "intervencion_sugerida": "comparar_procedimientos"
+        }
+      ],
+      "pista_gradual": "Calcula el precio despues del aumento. Luego pregunta: ¿a que cantidad se aplica el descuento?",
+      "reflexion_final": "¿Por que subir y bajar 20% no deja el precio original? ¿En que paso se equivoca cada respuesta incorrecta?",
+      "limite_ia_que_ensena": "Mostrar operaciones no garantiza corrección: hay que revisar los pasos y las bases.",
+      "confianza_inicial": {
+        "min": 0,
+        "max": 100
+      },
+      "revision_permitida": true,
+      "justificacion_breve_opcional": true,
+      "nota_metodologica": "La opcion elegida es indicio de un tipo de razonamiento, no diagnostico psicologico de sesgo ni prueba de Sistema 1 o Sistema 2."
+    },
+    {
+      "numero": 28,
+      "id": "SS-028",
+      "titulo": "La referencia que nadie encuentra",
+      "area": "fuentes_inventadas",
+      "objetivo": "Verificar una referencia antes de utilizarla como evidencia.",
+      "origen": "original_nueva",
+      "estado": "propuesta_para_revision",
+      "enunciado": "Una IA ayuda a redactar un trabajo sobre el agua y cita el supuesto informe \"Consumo de agua en adolescentes, 2025\". No indica institución autora ni enlace. Al buscar el título, un estudiante no encuentra un registro fiable. ¿Qué debería hacer antes de incluir la cita?",
+      "opciones": [
+        {
+          "id": 1,
+          "texto": "Incluirla porque el título parece académico y la IA la ofrece con seguridad."
+        },
+        {
+          "id": 2,
+          "texto": "Buscar un registro verificable en fuentes fiables; si no puede confirmarse, no presentarla como cita comprobada."
+        },
+        {
+          "id": 3,
+          "texto": "Afirmar que el informe no existe porque no aparecio en la primera busqueda, sin intentar comprobarlo mediante otros registros."
+        }
+      ],
+      "clave_docente": {
+        "correcta_id": 2,
+        "intuitiva_s1_id": 1
+      },
+      "explicacion_editorial": "Un titulo plausible no demuestra que una fuente exista. Antes de citar, hay que buscar un registro verificable por autor, institucion, revista o repositorio. Si no se puede corroborar, no debe presentarse como cita confirmada; tampoco se debe asegurar sin mas que la fuente es inexistente.",
+      "errores_previsibles": [
+        {
+          "opcion_id": 1,
+          "etiqueta": "cita_por_autoridad_aparente",
+          "descripcion": "Se confunde apariencia academica con existencia comprobada.",
+          "intervencion_sugerida": "pedir_verificacion_fuente"
+        },
+        {
+          "opcion_id": 3,
+          "etiqueta": "afirmar_inexistencia_sin_verificacion",
+          "descripcion": "Se confunde no haber localizado la referencia con haber demostrado que no existe.",
+          "intervencion_sugerida": "distinguir_no_verificado_de_falso"
+        }
+      ],
+      "pista_gradual": "¿Podrías mostrar el documento, su autor o un registro independiente?",
+      "reflexion_final": "¿Qué anotarías en tu trabajo si la referencia sigue sin verificarse?",
+      "limite_ia_que_ensena": "La IA puede generar referencias plausibles que no se han comprobado.",
+      "confianza_inicial": {
+        "min": 0,
+        "max": 100
+      },
+      "revision_permitida": true,
+      "justificacion_breve_opcional": true,
+      "nota_metodologica": "La opcion elegida es indicio de un tipo de razonamiento, no diagnostico psicologico de sesgo ni prueba de Sistema 1 o Sistema 2."
+    },
+    {
+      "numero": 29,
+      "id": "SS-029",
+      "titulo": "El aviso escolar que circula en el chat",
+      "area": "desinformacion",
+      "objetivo": "Evitar difundir afirmaciones no verificadas.",
+      "origen": "original_nueva",
+      "estado": "propuesta_para_revision",
+      "enunciado": "Circula una captura con el escudo de la escuela que anuncia suspensión de clases \"mañana\". No tiene fecha ni enlace y nadie encuentra el aviso en los canales oficiales. ¿Qué harías?",
+      "opciones": [
+        {
+          "id": 1,
+          "texto": "Compartirla con una advertencia: podría ser importante y otros decidirán si creerla."
+        },
+        {
+          "id": 2,
+          "texto": "Pedir a una IA que juzgue si la captura parece auténtica y compartirla si responde que sí."
+        },
+        {
+          "id": 3,
+          "texto": "Consultar un canal oficial actualizado, comprobar fecha y origen, y no difundirla como noticia confirmada."
+        }
+      ],
+      "clave_docente": {
+        "correcta_id": 3,
+        "intuitiva_s1_id": 1
+      },
+      "explicacion_editorial": "Una captura puede carecer de contexto o haber sido modificada. La apariencia del escudo y una segunda respuesta de IA no sustituyen la confirmación por canales oficiales.",
+      "errores_previsibles": [
+        {
+          "opcion_id": 1,
+          "etiqueta": "difusion_precipitada",
+          "descripcion": "Se privilegia la urgencia sobre la verificacion.",
+          "intervencion_sugerida": "detener_y_verificar"
+        },
+        {
+          "opcion_id": 2,
+          "etiqueta": "verificacion_circular_con_ia",
+          "descripcion": "Se trata una estimacion de IA sobre la imagen como prueba independiente.",
+          "intervencion_sugerida": "contrastar_con_fuente_primaria"
+        }
+      ],
+      "pista_gradual": "¿Cuál es la fuente original y qué significa \"mañana\" si no sabes la fecha?",
+      "reflexion_final": "¿Qué harías si la escuela publica después una aclaración?",
+      "limite_ia_que_ensena": "La IA no puede confirmar por sí sola la autenticidad o actualidad de una captura.",
+      "confianza_inicial": {
+        "min": 0,
+        "max": 100
+      },
+      "revision_permitida": true,
+      "justificacion_breve_opcional": true,
+      "nota_metodologica": "La opcion elegida es indicio de un tipo de razonamiento, no diagnostico psicologico de sesgo ni prueba de Sistema 1 o Sistema 2."
+    },
+    {
+      "numero": 30,
+      "id": "SS-030",
+      "titulo": "¿Quién puede participar en robótica?",
+      "area": "sesgo_equidad",
+      "objetivo": "Reconocer una generalizacion injustificada y proponer criterios equitativos.",
+      "origen": "original_nueva",
+      "estado": "propuesta_para_revision",
+      "enunciado": "Una herramienta de IA sugiere escoger sólo varones para un equipo de robótica porque \"suelen tener más facilidad para programar\". En el grupo hay alumnas y alumnos con experiencia diversa. ¿Qué decisión es más justificada?",
+      "opciones": [
+        {
+          "id": 1,
+          "texto": "Cuestionar la generalización y evaluar interés, habilidades demostradas y oportunidades equitativas de participar."
+        },
+        {
+          "id": 2,
+          "texto": "Aplicar la sugerencia porque la IA probablemente conoce patrones estadísticos que la escuela no conoce."
+        },
+        {
+          "id": 3,
+          "texto": "Excluir a todos los varones para corregir la recomendación injusta."
+        }
+      ],
+      "clave_docente": {
+        "correcta_id": 1,
+        "intuitiva_s1_id": 2
+      },
+      "explicacion_editorial": "La recomendación generaliza sobre un grupo y no considera evidencia individual pertinente. No se corrige una exclusión con otra; se requieren criterios transparentes y relevantes.",
+      "errores_previsibles": [
+        {
+          "opcion_id": 2,
+          "etiqueta": "generalizacion_estereotipada",
+          "descripcion": "Se acepta un estereotipo como criterio de seleccion.",
+          "intervencion_sugerida": "examinar_criterios_pertinentes"
+        },
+        {
+          "opcion_id": 3,
+          "etiqueta": "compensacion_por_exclusion",
+          "descripcion": "Se responde a una injusticia con una exclusion diferente.",
+          "intervencion_sugerida": "comparar_equidad_y_evidencia"
+        }
+      ],
+      "pista_gradual": "¿Qué información individual sería relevante para formar el equipo?",
+      "reflexion_final": "¿Cómo revisarías una recomendación de IA que perjudica a un grupo?",
+      "limite_ia_que_ensena": "Las recomendaciones de IA pueden reproducir estereotipos y no deben decidir oportunidades educativas sin revision humana.",
+      "confianza_inicial": {
+        "min": 0,
+        "max": 100
+      },
+      "revision_permitida": true,
+      "justificacion_breve_opcional": true,
+      "nota_metodologica": "La opcion elegida es indicio de un tipo de razonamiento, no diagnostico psicologico de sesgo ni prueba de Sistema 1 o Sistema 2."
+    },
+    {
+      "numero": 31,
+      "id": "SS-031",
+      "titulo": "La lista del grupo en una IA",
+      "area": "privacidad",
+      "objetivo": "Evitar compartir informacion personal de menores o companeros.",
+      "origen": "original_nueva",
+      "estado": "propuesta_para_revision",
+      "enunciado": "Para generar consejos de estudio, un alumno quiere copiar en una IA pública la lista de su grupo con nombres, calificaciones y teléfonos. ¿Cuál es la conducta más responsable?",
+      "opciones": [
+        {
+          "id": 1,
+          "texto": "Pegar la lista completa, pues el objetivo es escolar y no comercial."
+        },
+        {
+          "id": 2,
+          "texto": "Eliminar los teléfonos, pero compartir nombres y calificaciones sin consultar a nadie."
+        },
+        {
+          "id": 3,
+          "texto": "No subir datos identificables sin autorización y reglas institucionales claras; usar ejemplos ficticios o datos adecuadamente anonimizados."
+        }
+      ],
+      "clave_docente": {
+        "correcta_id": 3,
+        "intuitiva_s1_id": 1
+      },
+      "explicacion_editorial": "La finalidad escolar no autoriza compartir datos personales ajenos. Una actividad didáctica puede realizarse con ejemplos ficticios o datos aprobados y minimizados.",
+      "errores_previsibles": [
+        {
+          "opcion_id": 1,
+          "etiqueta": "justificacion_por_finalidad",
+          "descripcion": "Se presupone permiso por tener una buena intencion.",
+          "intervencion_sugerida": "revisar_privacidad_y_consentimiento"
+        },
+        {
+          "opcion_id": 2,
+          "etiqueta": "eliminacion_parcial_de_identificadores",
+          "descripcion": "Quitar telefonos no vuelve anonima una lista que aun contiene nombres y calificaciones.",
+          "intervencion_sugerida": "identificar_datos_personales_restantes"
+        }
+      ],
+      "pista_gradual": "¿Qué información necesita realmente la IA para ofrecer un ejemplo general de plan de estudio?",
+      "reflexion_final": "¿Cómo elaborarías el ejercicio sin utilizar datos reales de tus compañeros?",
+      "limite_ia_que_ensena": "Un sistema de IA puede procesar o retener datos compartidos; no asumas privacidad sin comprobar las condiciones de uso.",
+      "confianza_inicial": {
+        "min": 0,
+        "max": 100
+      },
+      "revision_permitida": true,
+      "justificacion_breve_opcional": true,
+      "nota_metodologica": "La opcion elegida es indicio de un tipo de razonamiento, no diagnostico psicologico de sesgo ni prueba de Sistema 1 o Sistema 2."
+    },
+    {
+      "numero": 32,
+      "id": "SS-032",
+      "titulo": "La voz de la directora",
+      "area": "medios_sinteticos",
+      "objetivo": "Distinguir semejanza perceptiva de autenticidad verificada.",
+      "origen": "original_nueva",
+      "estado": "propuesta_para_revision",
+      "enunciado": "En el chat del grupo circula un audio que parece tener la voz de la directora y anuncia que se canceló un examen. La escuela no ha hecho ningún anuncio oficial. ¿Qué conclusión es más responsable?",
+      "opciones": [
+        {
+          "id": 1,
+          "texto": "Dar el aviso por cierto: la voz se parece mucho a la de la directora."
+        },
+        {
+          "id": 2,
+          "texto": "Tratar el audio como no verificado, consultar canales oficiales y evitar difundirlo como hecho."
+        },
+        {
+          "id": 3,
+          "texto": "Asegurar que el audio es falso: hoy las voces se pueden imitar con IA."
+        }
+      ],
+      "clave_docente": {
+        "correcta_id": 2,
+        "intuitiva_s1_id": 1
+      },
+      "explicacion_editorial": "Un audio convincente puede ser verdadero o manipulado. Sin evidencia adicional, no corresponde declararlo auténtico ni falso; hay que contrastar su origen.",
+      "errores_previsibles": [
+        {
+          "opcion_id": 1,
+          "etiqueta": "autenticidad_por_semejanza",
+          "descripcion": "Se identifica semejanza de voz con autenticidad.",
+          "intervencion_sugerida": "verificar_procedencia_multimedia"
+        },
+        {
+          "opcion_id": 3,
+          "etiqueta": "falsedad_por_posibilidad_de_manipulacion",
+          "descripcion": "Se toma la posibilidad de falsificacion como prueba de falsedad.",
+          "intervencion_sugerida": "distinguir_posibilidad_y_prueba"
+        }
+      ],
+      "pista_gradual": "¿Qué canal independiente podría confirmar el aviso?",
+      "reflexion_final": "¿Por qué es distinto decir \"no está verificado\" que decir \"es falso\"?",
+      "limite_ia_que_ensena": "La IA puede generar voz o imagenes convincentes; su parecido no prueba procedencia.",
+      "confianza_inicial": {
+        "min": 0,
+        "max": 100
+      },
+      "revision_permitida": true,
+      "justificacion_breve_opcional": true,
+      "nota_metodologica": "La opcion elegida es indicio de un tipo de razonamiento, no diagnostico psicologico de sesgo ni prueba de Sistema 1 o Sistema 2."
+    },
+    {
+      "numero": 33,
+      "id": "SS-033",
+      "titulo": "Una recomendación sobre medicamentos",
+      "area": "decision_sensible",
+      "objetivo": "Reconocer cuando se requiere supervisión profesional o adulta.",
+      "origen": "original_nueva",
+      "estado": "propuesta_para_revision",
+      "enunciado": "Una IA aconseja a un adolescente modificar la dosis de un medicamento recetado, sin conocer su historial médico ni haber consultado a un profesional. ¿Qué respuesta es la más segura?",
+      "opciones": [
+        {
+          "id": 1,
+          "texto": "No cambiar la dosis por ese consejo; hablar con un adulto responsable y un profesional sanitario."
+        },
+        {
+          "id": 2,
+          "texto": "Seguir la indicación porque la IA da una explicación extensa y segura."
+        },
+        {
+          "id": 3,
+          "texto": "Consultar otras dos IA y elegir la dosis apoyada por la mayoría."
+        }
+      ],
+      "clave_docente": {
+        "correcta_id": 1,
+        "intuitiva_s1_id": 2
+      },
+      "explicacion_editorial": "Una recomendación generada sin evaluación clínica no sustituye una indicación profesional. Pedir otras respuestas de IA no equivale a una valoración sanitaria.",
+      "errores_previsibles": [
+        {
+          "opcion_id": 2,
+          "etiqueta": "delegacion_decision_sensible",
+          "descripcion": "Se trata una respuesta automatica como indicacion clinica.",
+          "intervencion_sugerida": "reconocer_limites_y_derivar"
+        },
+        {
+          "opcion_id": 3,
+          "etiqueta": "consenso_de_ia_como_autoridad",
+          "descripcion": "Se confunde acuerdo entre modelos con una evaluacion profesional.",
+          "intervencion_sugerida": "distinguir_consenso_de_evidencia"
+        }
+      ],
+      "pista_gradual": "¿Qué información no conoce el sistema y quién debe tomar una decisión sobre tratamiento?",
+      "reflexion_final": "¿En qué otros asuntos conviene no delegar la decisión final en una IA?",
+      "limite_ia_que_ensena": "La IA no dispone de una evaluación clínica completa ni reemplaza a profesionales.",
+      "confianza_inicial": {
+        "min": 0,
+        "max": 100
+      },
+      "revision_permitida": true,
+      "justificacion_breve_opcional": true,
+      "nota_metodologica": "La opcion elegida es indicio de un tipo de razonamiento, no diagnostico psicologico de sesgo ni prueba de Sistema 1 o Sistema 2."
+    },
+    {
+      "numero": 34,
+      "id": "SS-034",
+      "titulo": "El ahorro de energía del 37 por ciento",
+      "area": "incertidumbre",
+      "objetivo": "Identificar datos faltantes en predicciones aparentemente precisas.",
+      "origen": "original_nueva",
+      "estado": "propuesta_para_revision",
+      "enunciado": "Una IA afirma: \"Si tu escuela cambia sus lámparas, gastará exactamente 37% menos en electricidad\". No conoce el tipo ni el número de lámparas, horas de uso, otros consumos o tarifas. ¿Qué harías?",
+      "opciones": [
+        {
+          "id": 1,
+          "texto": "Pedir los datos que faltan, explicitar supuestos y hacer una estimación condicionada, sin tratar el 37% como seguro."
+        },
+        {
+          "id": 2,
+          "texto": "Aceptar la cifra: un porcentaje tan específico debe proceder de un cálculo fiable."
+        },
+        {
+          "id": 3,
+          "texto": "Concluir que una IA nunca puede ayudar con estimaciones de ahorro."
+        }
+      ],
+      "clave_docente": {
+        "correcta_id": 1,
+        "intuitiva_s1_id": 2
+      },
+      "explicacion_editorial": "El 37% exacto no esta fundamentado sin saber la potencia y cantidad de lamparas, horas de uso y consumo total de la escuela. Incluso si se reduce el consumo de iluminacion, el ahorro de toda la factura puede ser distinto. Una IA puede apoyar un calculo condicionado cuando se explicitan los datos y supuestos.",
+      "errores_previsibles": [
+        {
+          "opcion_id": 2,
+          "etiqueta": "precision_ficticia",
+          "descripcion": "Se confunde exactitud expresiva con fundamento empirico.",
+          "intervencion_sugerida": "identificar_datos_faltantes"
+        },
+        {
+          "opcion_id": 3,
+          "etiqueta": "rechazo_absoluto_de_ia",
+          "descripcion": "Se descarta cualquier uso posible aun con datos adecuados.",
+          "intervencion_sugerida": "formular_estimacion_condicional"
+        }
+      ],
+      "pista_gradual": "¿Qué variables necesitarías para calcular el ahorro?",
+      "reflexion_final": "¿Cómo expresarías el resultado sin prometer una certeza que no tienes?",
+      "limite_ia_que_ensena": "La IA puede dar cifras precisas sin datos suficientes y debe explicitar incertidumbre.",
+      "confianza_inicial": {
+        "min": 0,
+        "max": 100
+      },
+      "revision_permitida": true,
+      "justificacion_breve_opcional": true,
+      "nota_metodologica": "La opcion elegida es indicio de un tipo de razonamiento, no diagnostico psicologico de sesgo ni prueba de Sistema 1 o Sistema 2."
+    },
+    {
+      "numero": 35,
+      "id": "SS-035",
+      "titulo": "Un ensayo que parece escrito por el alumno",
+      "area": "integridad_academica",
+      "objetivo": "Usar IA como apoyo sin ocultar autoria ni renunciar al juicio propio.",
+      "origen": "original_nueva",
+      "estado": "propuesta_para_revision",
+      "enunciado": "La profesora permite usar IA para generar ideas, pero exige un ensayo personal y declarar la ayuda recibida. Un alumno recibe de la IA un ensayo completo y bien escrito. ¿Qué debe hacer?",
+      "opciones": [
+        {
+          "id": 1,
+          "texto": "Cambiar el título y entregar el texto como propio, porque el contenido es correcto."
+        },
+        {
+          "id": 2,
+          "texto": "Entregar el ensayo completo tal como lo redacto la IA y anotar al final que se utilizo la herramienta, sin realizar trabajo personal."
+        },
+        {
+          "id": 3,
+          "texto": "Usar las ideas como punto de partida, redactar su propio análisis, comprobar los datos y declarar el apoyo según las reglas de la clase."
+        }
+      ],
+      "clave_docente": {
+        "correcta_id": 3,
+        "intuitiva_s1_id": 1
+      },
+      "explicacion_editorial": "La profesora permite asistencia para generar ideas, pero exige un ensayo personal y declarar la ayuda. Ocultar la intervencion de la IA incumple la transparencia; revelarla no sustituye la obligacion de elaborar el propio argumento y verificar la informacion. La respuesta 3 satisface ambas condiciones.",
+      "errores_previsibles": [
+        {
+          "opcion_id": 1,
+          "etiqueta": "autoridad_sustituta",
+          "descripcion": "Se confunde un producto redactado con aprendizaje y autoria del estudiante.",
+          "intervencion_sugerida": "distinguir_apoyo_y_sustitucion"
+        },
+        {
+          "opcion_id": 2,
+          "etiqueta": "declaracion_sin_trabajo_propio",
+          "descripcion": "Se considera suficiente revelar el uso de IA, aunque el trabajo entregado no cumpla la exigencia de un ensayo personal.",
+          "intervencion_sugerida": "distinguir_transparencia_y_autoria"
+        }
+      ],
+      "pista_gradual": "¿Qué parte del ensayo demuestra realmente lo que aprendiste tú?",
+      "reflexion_final": "¿Cómo explicarías a la profesora exactamente para qué usaste la IA?",
+      "limite_ia_que_ensena": "La IA puede producir un texto convincente, pero no acredita conocimiento ni autoria propia.",
+      "confianza_inicial": {
+        "min": 0,
+        "max": 100
+      },
+      "revision_permitida": true,
+      "justificacion_breve_opcional": true,
+      "nota_metodologica": "La opcion elegida es indicio de un tipo de razonamiento, no diagnostico psicologico de sesgo ni prueba de Sistema 1 o Sistema 2."
+    }
+  ],
+  "criterio_de_secuenciacion": "No usar SS-024/SS-026 ni SS-025/SS-027 de manera consecutiva como evaluaciones independientes. SS-026 profundiza en preguntas de verificacion; SS-027 evalua transferencia con cantidades diferentes. Registrar si hubo exposicion previa.",
+  "limite_de_calificacion": "La eleccion de opcion y la confianza pueden calificarse/registrarse. Una justificacion libre no debe recibir calificacion automatica semantica sin evaluador explicitamente validado; conservarla como reflexion."
+}

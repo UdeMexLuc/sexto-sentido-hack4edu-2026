@@ -1,0 +1,100 @@
+% Sexto Sentido - estructura_ia.dlv - SOLO METADATOS
+% Generado a partir del banco editorial de 12 actividades revisadas.
+% No incluye claves correctas, intuiciones ni criterios de evaluacion.
+% Compatible con la firma opcion(P,N,C) del banco original.
+
+% 24. SS-024
+actividad_ia(24).
+problema(24).
+familia(24,apariencia_vs_evidencia).
+opcion(24,1,opcion_1).
+opcion(24,2,opcion_2).
+opcion(24,3,opcion_3).
+
+% 25. SS-025
+actividad_ia(25).
+problema(25).
+familia(25,verificacion_calculo).
+opcion(25,1,opcion_1).
+opcion(25,2,opcion_2).
+opcion(25,3,opcion_3).
+
+% 26. SS-026
+actividad_ia(26).
+problema(26).
+familia(26,evaluacion_de_evidencia).
+opcion(26,1,opcion_1).
+opcion(26,2,opcion_2).
+opcion(26,3,opcion_3).
+
+% 27. SS-027
+actividad_ia(27).
+problema(27).
+familia(27,comparacion_respuestas_ia).
+opcion(27,1,opcion_1).
+opcion(27,2,opcion_2).
+opcion(27,3,opcion_3).
+
+% 28. SS-028
+actividad_ia(28).
+problema(28).
+familia(28,fuentes_inventadas).
+opcion(28,1,opcion_1).
+opcion(28,2,opcion_2).
+opcion(28,3,opcion_3).
+
+% 29. SS-029
+actividad_ia(29).
+problema(29).
+familia(29,desinformacion).
+opcion(29,1,opcion_1).
+opcion(29,2,opcion_2).
+opcion(29,3,opcion_3).
+
+% 30. SS-030
+actividad_ia(30).
+problema(30).
+familia(30,sesgo_equidad).
+opcion(30,1,opcion_1).
+opcion(30,2,opcion_2).
+opcion(30,3,opcion_3).
+
+% 31. SS-031
+actividad_ia(31).
+problema(31).
+familia(31,privacidad).
+opcion(31,1,opcion_1).
+opcion(31,2,opcion_2).
+opcion(31,3,opcion_3).
+
+% 32. SS-032
+actividad_ia(32).
+problema(32).
+familia(32,medios_sinteticos).
+opcion(32,1,opcion_1).
+opcion(32,2,opcion_2).
+opcion(32,3,opcion_3).
+
+% 33. SS-033
+actividad_ia(33).
+problema(33).
+familia(33,decision_sensible).
+opcion(33,1,opcion_1).
+opcion(33,2,opcion_2).
+opcion(33,3,opcion_3).
+
+% 34. SS-034
+actividad_ia(34).
+problema(34).
+familia(34,incertidumbre).
+opcion(34,1,opcion_1).
+opcion(34,2,opcion_2).
+opcion(34,3,opcion_3).
+
+% 35. SS-035
+actividad_ia(35).
+problema(35).
+familia(35,integridad_academica).
+opcion(35,1,opcion_1).
+opcion(35,2,opcion_2).
+opcion(35,3,opcion_3).

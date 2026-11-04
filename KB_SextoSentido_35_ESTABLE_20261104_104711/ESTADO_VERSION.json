@@ -1,0 +1,34 @@
+{
+  "version": "sexto_35_v1_verificada_por_usuario_25_de_25",
+  "fecha_respaldo_local": "2026-11-04T10:47:12",
+  "pruebas_esperadas": "verificar_sexto_35.py: 25/25 antes del respaldo",
+  "documentos_y_codigo": 19,
+  "archivos_incluidos": [
+    "sexto_35.py",
+    "textos_problemas.json",
+    "Sexto_Sentido_12_actividades_revisadas.json",
+    "problemas.dlv",
+    "diagnostico.dlv",
+    "tutor.dlv",
+    "estructura_ia.dlv",
+    "politica_ia.dlv",
+    "verificar_sexto_35.py",
+    "probar_sexto_35.cmd",
+    "congelar_sexto_35.py",
+    "congelar_sexto_35.cmd",
+    "preparar_demos_video.py",
+    "preparar_demos_video.cmd",
+    "reproducir_demo.py",
+    "GUIA_DEMOS_VIDEO.md",
+    "GUION_VIDEO_10MIN_EN.md",
+    "MATRIZ_RETO07.md",
+    "LEEME_PASO_FINAL.txt"
+  ],
+  "excluidos": [
+    "historial_alumno.dlv",
+    "historial_sexto_35.dlv",
+    "reflexiones_alumno.jsonl",
+    "reflexiones_sexto_35.jsonl"
+  ],
+  "nota": "Version tecnica reproducible; la eficacia educativa requiere evaluacion humana"
+}
