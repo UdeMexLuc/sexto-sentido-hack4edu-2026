@@ -1,10 +1,12 @@
 # Sexto Sentido: antes de creer
 
-**Laboratorio de pensamiento crítico con IA · Hack4Edu 2026 · Primera versión funcional (`v0.1.0`).**
+**Laboratorio de pensamiento crítico con IA · Hack4Edu 2026 · Versión `v0.1.1` — corrección UTF-8 para las demos de Windows.**
 
 Una respuesta convincente puede estar equivocada. Sexto Sentido propone casos breves para practicar cómo comprobar una afirmación, identificar información insuficiente y revisar una decisión. Utiliza **IA simbólica (ASP/DLV)** para elegir ayudas pedagógicas con un motivo explícito.
 
 ![Interfaz local de Sexto Sentido](interfaz/vista_inicio.png)
+
+Esta revisión incorpora el ajuste posterior de `KB_SextoSentido_23` para generar demostraciones con UTF-8 en Windows CMD. Consulta el [historial de cambios](CHANGELOG.md).
 
 ## Para el jurado: empezar aquí
 
@@ -95,6 +97,6 @@ KB_SextoSentido_35_ESTABLE_20261104_104711/  Motor, reglas y banco original
 docs/                                  Instalación y evidencia técnica
 ```
 
-La carpeta del motor conserva sus archivos originales y su manifiesto SHA-256. Sus guías históricas describen el empaquetado previo; para ejecutar esta entrega sigue este README. El guion de diez minutos es material interno de producción y no establece la duración oficial de entrega del hackatón.
+La carpeta del motor conserva su nombre histórico. En v0.1.1 se actualizaron los dos preparadores de demos y sus metadatos; el manifiesto SHA-256 corresponde a esta revisión. El motor, las reglas y los bancos permanecen iguales a v0.1.0. Sus guías históricas describen el empaquetado previo; para ejecutar esta entrega sigue este README. El guion de diez minutos es material interno de producción y no establece la duración oficial de entrega del hackatón.
 
 DLV es software de terceros y mantiene sus condiciones de licencia. Consulta [la documentación de DLVSystem](https://www.dlvsystem.it/dlvsite/dlv/). Esta publicación no incorpora el ejecutable ni asigna una nueva licencia al trabajo previo del equipo.
