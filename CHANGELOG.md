@@ -1,5 +1,15 @@
 # Historial de cambios
 
+## v0.2.0 — 4 de noviembre de 2026
+
+- Captura una justificación inicial breve y opcional antes de consultar a DLV. Conserva por separado la razón de la revisión y la reflexión posterior a la explicación.
+- Añade el recorrido guiado 25 → 29 → 31 → 34, con avance explícito, pausa y reanudación tras recargar.
+- Añade un resumen para estudiante y docente con decisiones, confianza, ayudas y razones, impresión y descarga CSV UTF-8.
+- Conserva las 35 actividades para exploración libre. Las reflexiones se registran para revisión humana, sin calificación automática ni nota general de pensamiento crítico.
+- El diario de intentos permite recuperar los datos y reservar sesiones distintas entre pestañas. Los registros anteriores se muestran con sus campos disponibles.
+- Amplía a 14 los grupos de pruebas de la interfaz, incluidas captura previa a la ayuda, conservación de razones, recorrido, recuperación, datos anteriores y CSV con texto libre.
+- Mantiene el motor, las reglas y los bancos de v0.1.1. Las entregas anteriores conservan sus etiquetas.
+
 ## v0.1.1 — 4 de noviembre de 2026
 
 Corrige la configuración de UTF-8 al preparar y ejecutar las demostraciones en Windows CMD.

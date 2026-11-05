@@ -1,12 +1,12 @@
 # Sexto Sentido: antes de creer
 
-**Laboratorio de pensamiento crítico con IA · Hack4Edu 2026 · Versión `v0.1.1` — corrección UTF-8 para las demos de Windows.**
+**Laboratorio de pensamiento crítico con IA · Hack4Edu 2026 · Versión `v0.2.0` — razones previas, recorrido guiado y resumen de decisiones.**
 
 Una respuesta convincente puede estar equivocada. Sexto Sentido propone casos breves para practicar cómo comprobar una afirmación, identificar información insuficiente y revisar una decisión. Utiliza **IA simbólica (ASP/DLV)** para elegir ayudas pedagógicas con un motivo explícito.
 
-![Interfaz local de Sexto Sentido](interfaz/vista_inicio.png)
+![Resumen de decisiones de Sexto Sentido v0.2.0](interfaz/vista_resumen_v020.png)
 
-Esta revisión incorpora el ajuste posterior de `KB_SextoSentido_23` para generar demostraciones con UTF-8 en Windows CMD. Consulta el [historial de cambios](CHANGELOG.md).
+Esta versión añade una justificación opcional antes de la ayuda, un recorrido de cuatro casos y un resumen imprimible y descargable en CSV. Conserva el ajuste UTF-8 de v0.1.1. Consulta el [historial de cambios](CHANGELOG.md).
 
 ## Para el jurado: empezar aquí
 
@@ -24,7 +24,15 @@ El repositorio contiene el código de una aplicación local: visitar GitHub perm
 
 ## Qué probar
 
-Usa un seudónimo ficticio, por ejemplo `jurado_demo`.
+Usa un seudónimo ficticio, por ejemplo `jurado_demo`, y pulsa **Empezar el recorrido**. La secuencia es **25 → 29 → 31 → 34**: cálculo, información sin verificar, privacidad e incertidumbre. Al terminar cada caso, guarda la reflexión para pasar al siguiente; el cuarto conduce al resumen.
+
+Antes de consultar al tutor puedes registrar por qué elegiste una opción. La razón inicial se conserva tal como se envió. Si revisas la elección, puedes añadir otra razón **antes de ver la explicación**. La reflexión final se solicita después de la explicación y se distingue de ambas razones.
+
+Puedes ir al banco y pulsar **Retomar actividad** para continuar el mismo intento. La pantalla se recupera tras recargar el navegador. Si empiezas otro caso desde el banco, se conserva lo registrado del intento anterior, pero ese intento deja de ser la actividad pausada.
+
+En **Resumen de decisiones** puedes consultar respuestas, confianza, ayudas y razones, imprimir la vista o descargar **todos los intentos del seudónimo actual** en CSV. No se asigna una nota de pensamiento crítico ni se califican automáticamente los textos. Las actividades libres siguen disponibles en **Explorar actividades**.
+
+Para inspeccionar ayudas concretas puedes usar estos recorridos adicionales desde el banco:
 
 | Recorrido | Pasos sugeridos | Qué permite observar |
 | --- | --- | --- |
@@ -40,7 +48,9 @@ En cada caso puedes desplegar **«¿Cómo tomó esta decisión el tutor?»** par
 
 - **35 actividades:** 23 ejercicios de razonamiento y 12 casos sobre uso crítico y responsable de IA.
 - Interfaz en navegador y versión de consola.
-- Respuesta y confianza iniciales, ayudas, revisión y reflexión final.
+- Respuesta, confianza y justificación opcional antes de la ayuda; revisión con razón opcional y reflexión final posterior a la explicación.
+- Recorrido guiado de cuatro casos y pausa con reanudación.
+- Resumen para estudiante y docente, impresión y exportación CSV.
 - Registro local de las decisiones y sus revisiones.
 - Intervenciones explicables a partir de opciones elegidas, confianza e historial.
 - Pruebas de integración y demostraciones reproducibles.
@@ -64,7 +74,7 @@ python3 ejecutar.py --pruebas
 python3 ejecutar.py --pruebas-interfaz
 ```
 
-La suite original contiene **25 comprobaciones**. La suite de interfaz contiene **6 grupos**, con recorridos de acierto y error para las 35 actividades, segundos distractores, transferencia, prioridad de precaución, recuperación de sesión y manejo de fallos de DLV. Ambas utilizan historiales temporales. Consulta [el registro de validación](docs/VALIDACION.md).
+La suite original contiene **25 comprobaciones**. La suite de interfaz contiene **14 grupos**, con recorridos de acierto y error para las 35 actividades, segundos distractores, transferencia, prioridad de precaución, recuperación de sesión y manejo de fallos de DLV. También verifica el orden de captura de la razón inicial, el recorrido de cuatro casos, pausa y recuperación, separación de seudónimos, compatibilidad de registros anteriores y exportación CSV. Ambas utilizan historiales temporales. Consulta [el registro de validación](docs/VALIDACION.md).
 
 Para listar las actividades o usar la consola:
 
@@ -81,12 +91,12 @@ python3 ejecutar.py --consola --alumno demo --problema 25 --una
 - No detecta técnicamente imágenes o audios manipulados.
 - No diagnostica mecanismos mentales ni sustituye al docente o a profesionales.
 - La ayuda considera antecedentes; la elección de la siguiente actividad es manual.
-- La opción elegida se evalúa con una clave: el programa todavía no exige introducir cálculos propios ni registra una justificación antes de la primera pista.
+- La opción elegida se evalúa con una clave: el programa todavía no exige introducir cálculos propios. Las razones se registran, pero no se evalúa automáticamente su calidad.
 - Las pruebas funcionales no demuestran mejora del aprendizaje ni cumplimiento formal de una rúbrica del concurso.
 
 ## Datos y privacidad de la demostración
 
-Utiliza datos ficticios. La interfaz guarda respuestas, confianza, reflexiones y sesiones en `datos_interfaz/`, excluida de Git. La consola utiliza archivos de historial propios dentro del banco estable, también excluidos. Los archivos son locales y no están cifrados; esta versión no tiene autenticación y escucha únicamente en `127.0.0.1`.
+Utiliza datos ficticios. La interfaz guarda respuestas, confianza, reflexiones y sesiones en `datos_interfaz/`, excluida de Git. La consola utiliza archivos de historial propios dentro del banco estable, también excluidos. Los intentos de la interfaz se guardan también en `datos_interfaz/intentos_interfaz.jsonl`; cada actualización conserva las razones iniciales y las revisiones como eventos. Los registros anteriores pueden mostrarse con campos ausentes identificados y sin inventar justificaciones. Los archivos son locales y no están cifrados; esta versión no tiene autenticación y escucha únicamente en `127.0.0.1`.
 
 ## Organización
 
@@ -97,6 +107,6 @@ KB_SextoSentido_35_ESTABLE_20261104_104711/  Motor, reglas y banco original
 docs/                                  Instalación y evidencia técnica
 ```
 
-La carpeta del motor conserva su nombre histórico. En v0.1.1 se actualizaron los dos preparadores de demos y sus metadatos; el manifiesto SHA-256 corresponde a esta revisión. El motor, las reglas y los bancos permanecen iguales a v0.1.0. Sus guías históricas describen el empaquetado previo; para ejecutar esta entrega sigue este README. El guion de diez minutos es material interno de producción y no establece la duración oficial de entrega del hackatón.
+La versión del producto está en `VERSION`. La interfaz de v0.2.0 conserva el motor de v0.1.1. La carpeta del motor conserva su nombre histórico. En v0.1.1 se actualizaron los dos preparadores de demos y sus metadatos; el manifiesto SHA-256 corresponde a esta revisión. El motor, las reglas y los bancos permanecen iguales a v0.1.0. Sus guías históricas describen el empaquetado previo; para ejecutar esta entrega sigue este README. El guion de diez minutos es material interno de producción y no establece la duración oficial de entrega del hackatón.
 
 DLV es software de terceros y mantiene sus condiciones de licencia. Consulta [la documentación de DLVSystem](https://www.dlvsystem.it/dlvsite/dlv/). Esta publicación no incorpora el ejecutable ni asigna una nueva licencia al trabajo previo del equipo.
