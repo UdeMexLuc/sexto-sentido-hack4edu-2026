@@ -61,6 +61,6 @@ python3 ejecutar.py --pruebas
 python3 ejecutar.py --pruebas-interfaz
 ```
 
-Las pruebas deben terminar con **25 comprobaciones superadas** y **OK (6 tests)**, respectivamente. Si falla el motor, comprueba primero la versión y arquitectura del ejecutable con `--comprobar`.
+Las pruebas deben terminar con **25 comprobaciones superadas** y **OK (14 tests)**, respectivamente. Si falla el motor, comprueba primero la versión y arquitectura del ejecutable con `--comprobar`.
 
 Las instrucciones de Windows se proporcionan para el lanzador multiplataforma; la validación de esta entrega se realizó en macOS Apple Silicon, y no constituye una nueva validación independiente en Windows o Linux.

@@ -1,5 +1,22 @@
 # Validación de las entregas
 
+## v0.2.0 — recorrido, justificaciones y resumen
+
+Fecha: **4 de noviembre de 2026**. Pruebas ejecutadas desde una copia temporal de entrega con Python 3.9.6, macOS Apple Silicon y DLV clásico build BEN/Mar 29 2023.
+
+- **25/25 comprobaciones del motor aprobadas.**
+- **14 grupos de pruebas de la interfaz aprobados.**
+- **3/3 demostraciones reproducidas con DLV.**
+- Los 19 archivos del motor conservan las huellas del manifiesto de v0.1.1.
+- Las pruebas nuevas verifican la escritura de la razón antes de consultar DLV, razones iniciales y revisadas independientes, recorrido completo, pausa y reanudación, sesiones entre pestañas, recuperación de registros anteriores y reversión ante fallos.
+- La exportación CSV se verificó con Unicode, comas, saltos de línea y texto que podría interpretarse como fórmula.
+
+En el navegador se completó el recorrido **25 → 29 → 31 → 34** con un seudónimo ficticio, combinando errores con revisión, aciertos con baja confianza y aciertos directos. Se comprobó la pausa, recarga y reanudación, y se descargó un CSV real con las cuatro actividades y sus razones. El resumen mostró cuatro intentos finalizados y dos revisiones. También se revisaron las vistas de escritorio y de 390 píxeles, sin desbordamiento horizontal.
+
+[Registro completo de v0.2.0](PRUEBAS_V0.2.0_20261104.txt). [Guía del recorrido y resumen](GUIA_V0.2.0.md).
+
+Estas pruebas verifican funcionamiento; no demuestran aprendizaje ni validan una calificación del pensamiento crítico. No se ha realizado una nueva ejecución independiente en Windows. Las capturas usan exclusivamente datos ficticios y la entrega excluye historiales y el binario DLV.
+
 ## v0.1.1 — ajuste UTF-8 para demos de Windows
 
 Fecha: **4 de noviembre de 2026**. Se ejecutó la copia de entrega en una carpeta temporal con Python 3.9.6, macOS Apple Silicon y DLV clásico build BEN/Mar 29 2023.

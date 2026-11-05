@@ -1,0 +1,71 @@
+Validación de v0.2.0 · 2026-11-04 · macOS Apple Silicon · Python 3.9.6 · DLV clásico build BEN/Mar 29 2023
+
+COMANDO: python3 ejecutar.py --pruebas
+
+SEXTO SENTIDO 35 - PRUEBAS DE INTEGRACION
+Usa una carpeta temporal; no modifica el historial original.
+
+[OK] T01 banco completo: 23+12=35
+[OK] T02 24 errores editoriales corresponden a la politica
+[OK] T03 objetivos de transferencia disponibles
+[OK] T04 listado sin crear historial
+[OK] T05 actividad 24: ayuda, revision e historial
+[OK] T06 actividad 25: ayuda, revision e historial
+[OK] T07 actividad 26: ayuda, revision e historial
+[OK] T08 actividad 27: ayuda, revision e historial
+[OK] T09 actividad 28: ayuda, revision e historial
+[OK] T10 actividad 29: ayuda, revision e historial
+[OK] T11 actividad 30: ayuda, revision e historial
+[OK] T12 actividad 31: ayuda, revision e historial
+[OK] T13 actividad 32: ayuda, revision e historial
+[OK] T14 actividad 33: ayuda, revision e historial
+[OK] T15 actividad 34: ayuda, revision e historial
+[OK] T16 actividad 35: ayuda, revision e historial
+[OK] T17 segundo distractor y pista breve
+[OK] T18 problema original 1: ayuda gradual y revision
+[OK] T19 acierto con baja confianza: pedir justificacion
+[OK] T20 reanudar revision pendiente sin duplicar respuesta
+[OK] T21 transferencia entre actividades 24 y 26
+[OK] T22 seguridad: caso 29 prima sobre transferencia
+[OK] T23 salida temprana: sin evaluacion inventada
+[OK] T24 nuevo historial independiente en carpeta temporal
+[OK] T25 historiales reales intactos
+
+[OK] 25 de 25 comprobaciones superadas.
+[OK] Los historiales reales no se modificaron.
+[OK] La version estable sexto_entrega.py permanece intacta.
+
+COMANDO: python3 ejecutar.py --pruebas-interfaz
+test_35_aciertos_iniciales_y_justificacion (__main__.FlujosInterfaz) ... ok
+test_35_errores_ayuda_y_revision_correcta (__main__.FlujosInterfaz) ... ok
+test_csv_unicode_campos_y_formulas_como_texto (__main__.FlujosInterfaz) ... ok
+test_datos_anteriores_se_recuperan_sin_inventar_razones (__main__.FlujosInterfaz) ... ok
+test_fallo_dlv_no_guarda_respuesta_parcial (__main__.FlujosInterfaz) ... ok
+test_pausa_recarga_y_reanudacion_del_recorrido (__main__.FlujosInterfaz) ... ok
+test_razon_inicial_precede_dlv_y_se_conserva (__main__.FlujosInterfaz) ... ok
+test_razon_invalida_y_fallo_dlv_revierten_todos_los_registros (__main__.FlujosInterfaz) ... ok
+test_recorrido_completo_cuatro_casos_y_resumen (__main__.FlujosInterfaz) ... ok
+test_reporte_filtra_seudonimos_y_no_califica_razones (__main__.FlujosInterfaz) ... ok
+test_reserva_intentos_sin_colision_entre_pestanas (__main__.FlujosInterfaz) ... ok
+test_segundos_distractores_y_revision_incorrecta (__main__.FlujosInterfaz) ... ok
+test_transferencia_y_prioridad_de_precaucion (__main__.FlujosInterfaz) ... ok
+test_validacion_duplicados_y_recuperacion (__main__.FlujosInterfaz) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 2.163s
+
+OK
+
+COMANDO: python3 ejecutar.py --demos
+[OK] Carpeta preparada: <copia_temporal>/DEMOS_VIDEO_SS35_20261104_232813/01_verificar_calculo
+[OK] Demo 1 reproducida con DLV; transcripcion generada.
+[OK] Carpeta preparada: <copia_temporal>/DEMOS_VIDEO_SS35_20261104_232813/02_aviso_no_verificado
+[OK] Demo 2 reproducida con DLV; transcripcion generada.
+[OK] Carpeta preparada: <copia_temporal>/DEMOS_VIDEO_SS35_20261104_232813/03_adaptacion_historial
+[OK] Demo 3 reproducida con DLV; transcripcion generada.
+
+Directorio de las demostraciones: <copia_temporal>/DEMOS_VIDEO_SS35_20261104_232813
+Cada demo incluye un CMD independiente y su propia carpeta de datos.
+No se ha tocado el historial_sexto_35.dlv ni el historial_alumno.dlv.
+
+[OK] Los 19 archivos del motor conservan el manifiesto de v0.1.1.
