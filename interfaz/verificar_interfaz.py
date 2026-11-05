@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Pruebas del adaptador gráfico con DLV real y datos temporales."""
 import json
+import csv
+import io
 import os
 import tempfile
 import unittest
@@ -116,6 +118,128 @@ class FlujosInterfaz(unittest.TestCase):
         self.assertEqual(gui.ss.HIST.read_bytes(), history)
         self.assertEqual(self.tutor.public(self.token)['stage'], 'inicial')
         self.assertEqual(self.answer(1)['stage'], 'ayuda')
+
+    def test_razon_inicial_precede_dlv_y_se_conserva(self):
+        self.start(25)
+        original = self.tutor.decision
+        def observing(state):
+            reflections = [json.loads(l) for l in gui.ss.REFLEX.read_text().splitlines()]
+            self.assertEqual(reflections[-1]['etapa'], 'justificacion_inicial')
+            self.assertEqual(reflections[-1]['texto'], 'Los porcentajes se cancelan.')
+            return original(state)
+        with patch.object(self.tutor, 'decision', side_effect=observing):
+            self.tutor.act(self.token, '/api/answer', {
+                'option': 1, 'confidence': 90, 'reason': 'Los porcentajes se cancelan.'})
+        self.continue_()
+        s = self.tutor.act(self.token, '/api/answer', {
+            'option': 2, 'confidence': 75, 'reason': 'El descuento usa el precio aumentado.'})
+        self.assertEqual(s['inicial']['reason'], 'Los porcentajes se cancelan.')
+        self.finish()
+        row = self.tutor.report('prueba_visual')[0]
+        self.assertEqual(row['inicial']['reason'], 'Los porcentajes se cancelan.')
+        self.assertEqual(row['final']['reason'], 'El descuento usa el precio aumentado.')
+        self.assertEqual(row['final_reflection'], 'Cierre ficticio.')
+        self.assertEqual(row['interventions'][0]['action'], 'verificar_operaciones')
+        self.assertTrue(row['finished'])
+
+    def test_recorrido_completo_cuatro_casos_y_resumen(self):
+        s = self.tutor.act(self.token, '/api/journey', {'student': 'recorrido_demo'})
+        route_id = s['journey']['id']
+        for index, pid in enumerate([25, 29, 31, 34]):
+            self.assertEqual(s['pid'], pid)
+            self.assertEqual(s['journey']['index'], index)
+            self.assertEqual(s['journey']['id'], route_id)
+            p = self.tutor.bank[pid]
+            # Incluye un acierto inicial con duda y tres revisiones.
+            choice = p['clave_docente']['correcta_id'] if pid == 31 else p['clave_docente']['intuitiva_s1_id']
+            s = self.answer(int(choice), 20 if pid == 31 else 90)
+            s = self.continue_()
+            if pid != 31:
+                s = self.answer(int(p['clave_docente']['correcta_id']))
+            self.assertEqual(s['stage'], 'resultado')
+            s = self.finish()
+        self.assertEqual(s['stage'], 'resumen')
+        self.assertTrue(s['journey']['completed'])
+        self.assertEqual([r['pid'] for r in s['report']], [25, 29, 31, 34])
+        self.assertTrue(all(r['finished'] for r in s['report']))
+        self.assertEqual(len(self.tutor.bank), 35)
+        with self.assertRaises(ValueError):
+            self.finish()
+
+    def test_pausa_recarga_y_reanudacion_del_recorrido(self):
+        self.tutor.act(self.token, '/api/journey', {'student': 'pausa_demo'})
+        self.tutor.act(self.token, '/api/answer', {'option': 1, 'confidence': 90, 'reason': 'Mi razón inicial.'})
+        s = self.tutor.act(self.token, '/api/catalog', {})
+        self.assertEqual(s['stage'], 'catalogo')
+        self.assertEqual(s['paused']['pid'], 25)
+        self.assertNotIn('inicial', s['paused'])
+        self.tutor = gui.Tutor(Path(self.tmp.name))
+        s = self.tutor.act(self.token, '/api/resume', {})
+        self.assertEqual(s['stage'], 'ayuda')
+        self.assertEqual(s['inicial']['reason'], 'Mi razón inicial.')
+        self.continue_()
+        self.answer(2)
+        s = self.finish()
+        self.assertEqual(s['pid'], 29)
+
+    def test_reserva_intentos_sin_colision_entre_pestanas(self):
+        a = self.start(25)
+        b = self.tutor.act('b' * 32, '/api/start', {'student': 'prueba_visual', 'pid': 25})
+        self.assertNotEqual(a['session'], b['session'])
+        self.answer(1)
+        self.tutor.act('b' * 32, '/api/answer', {'option': 2, 'confidence': 90, 'reason': ''})
+        self.assertEqual(len(self.tutor.report('prueba_visual')), 2)
+
+    def test_csv_unicode_campos_y_formulas_como_texto(self):
+        self.start(25)
+        malicious = '=HYPERLINK("https://ejemplo.test","hola")\nCon coma, y acento: cálculo.'
+        self.tutor.act(self.token, '/api/answer', {'option': 2, 'confidence': 90, 'reason': malicious})
+        self.finish()
+        binary = self.tutor.csv_report(self.token)
+        self.assertTrue(binary.startswith(b'\xef\xbb\xbf'))
+        rows = list(csv.DictReader(io.StringIO(binary.decode('utf-8-sig'))))
+        self.assertEqual(rows[0]['razon_inicial'], "'" + malicious)
+        self.assertEqual(rows[0]['estado'], 'Finalizado')
+        self.assertEqual(rows[0]['confianza_inicial'], '90')
+        self.assertEqual(rows[0]['respuesta_inicial'], self.tutor.bank[25]['opciones'][1]['texto'])
+        self.assertEqual(rows[0]['opcion_revisada'], '')
+
+    def test_reporte_filtra_seudonimos_y_no_califica_razones(self):
+        self.start(25, 'primero')
+        s1 = self.tutor.act(self.token, '/api/answer', {'option': 1, 'confidence': 90, 'reason': 'Una razón.'})
+        self.continue_()
+        self.answer(2)
+        self.finish()
+        self.start(25, 'segundo')
+        s2 = self.tutor.act(self.token, '/api/answer', {'option': 1, 'confidence': 90, 'reason': 'Otra razón.'})
+        self.assertEqual(s1['decision'], s2['decision'])
+        self.assertEqual(len(s2['report']), 1)
+        self.assertEqual(s2['report'][0]['student'], 'segundo')
+        self.assertNotIn('primero', self.tutor.csv_report(self.token).decode('utf-8-sig'))
+
+    def test_razon_invalida_y_fallo_dlv_revierten_todos_los_registros(self):
+        self.start(25)
+        before = {p.name: p.read_bytes() for p in Path(self.tmp.name).iterdir()}
+        for reason in [None, 45, 'x' * 3001]:
+            with self.assertRaises(ValueError):
+                self.tutor.act(self.token, '/api/answer', {'option': 1, 'confidence': 90, 'reason': reason})
+        with patch.object(self.tutor, 'decision', side_effect=RuntimeError('Fallo simulado')):
+            with self.assertRaises(RuntimeError):
+                self.tutor.act(self.token, '/api/answer', {'option': 1, 'confidence': 90, 'reason': 'No debe quedar guardada.'})
+        after = {p.name: p.read_bytes() for p in Path(self.tmp.name).iterdir()}
+        self.assertEqual(before, after)
+        self.assertEqual(self.tutor.report('prueba_visual'), [])
+
+    def test_datos_anteriores_se_recuperan_sin_inventar_razones(self):
+        p = self.tutor.bank[25]
+        gui.ss.actualizar(['alumno(anterior).'], contexto=('anterior', 1, 25))
+        gui.ss.guardar_respuesta('anterior', 1, p, 'inicial', 1, 90)
+        gui.ss.guardar_respuesta('anterior', 1, p, 'final', 2, 80)
+        row = self.tutor.report('anterior')[0]
+        self.assertTrue(row['legacy'])
+        self.assertFalse(row['finished'])
+        self.assertEqual(row['inicial']['reason'], '')
+        self.assertEqual(row['final']['confidence'], 80)
 
 
 if __name__ == '__main__':
